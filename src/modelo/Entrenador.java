@@ -1,5 +1,8 @@
 package modelo;
 
+
+///HOLA SOY JOAQUIN
+
 import java.time.LocalDate;
 
 public class Entrenador {
