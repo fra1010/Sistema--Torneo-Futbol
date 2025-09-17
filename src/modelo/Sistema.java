@@ -23,7 +23,7 @@ public class Sistema {
 
 	
 	
-	public boolean agregarEntrenador(int idEntrenador, String nombre, String apellido, String dni, LocalDate fechaNacimiento,
+	public boolean agregarEntrenador(String nombre, String apellido, String dni, LocalDate fechaNacimiento,
 			String estrategiaFavorita)throws Exception {
 		
 		Entrenador entrenadorABuscar= traerEntrenadorDni(dni) ;
@@ -40,7 +40,7 @@ public class Sistema {
 				
 		}
 		
-		Entrenador entrenadorAux= new Entrenador(idEntrenador, nombre,apellido,dni,fechaNacimiento,estrategiaFavorita);
+		Entrenador entrenadorAux= new Entrenador(id+1, nombre,apellido,dni,fechaNacimiento,estrategiaFavorita);
 		
 		return entrenadores.add(entrenadorAux);
 		

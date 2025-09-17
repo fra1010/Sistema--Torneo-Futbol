@@ -17,7 +17,8 @@ public class Test {
 			
 			//sys.agregarJugador(1,"Ricado","Bochini","10896458",fechaActual,1.68, 67, "Delantero", 10 );
 			
-			sys.agregarEntrenador(1,"Sabella","Alejandro ","10896451",fechaActual,"Defensivo" );
+			sys.agregarEntrenador("Sabella","Alejandro ","10896451",fechaActual,"Defensivo" );
+			sys.agregarEntrenador("Guardiola","Pep","10896452",fechaActual,"tiki taka" );
 			
 			
 			

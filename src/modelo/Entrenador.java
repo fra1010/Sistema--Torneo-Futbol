@@ -99,7 +99,7 @@ public class Entrenador {
 	@Override
 	public String toString() {
 		return "Entrenador [idEntrenador=" + idEntrenador + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
-				+ ", fechaNacimiento=" + fechaNacimiento + ", estrategiaFavorita=" + estrategiaFavorita + "]";
+				+ ", fechaNacimiento=" + fechaNacimiento + ", estrategiaFavorita=" + estrategiaFavorita + "]\n";
 	}
 	
 	
