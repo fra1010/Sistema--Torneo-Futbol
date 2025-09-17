@@ -19,6 +19,32 @@ public class Sistema {
 	}
 	
 	
+	public boolean agregarEntrenador(int idEntrenador, String nombre, String apellido, String dni, LocalDate fechaNacimiento,
+			String estrategiaFavorita)throws Exception {
+		
+		Entrenador entrenadorABuscar= traerEntrenadorDni(dni) ;
+		
+		if(entrenadorABuscar!=null) throw new Exception("Error, ya existe un entrenador con dni:"+ dni );
+		
+		int id=0;
+		
+		if(entrenadores.size()>0) {
+			int ultimoIndice= entrenadores.size()-1;
+			
+			Entrenador ultimoEntrenador= entrenadores.get(ultimoIndice);
+			id= ultimoEntrenador.getIdEntrenador();
+				
+		}
+		
+		Entrenador entrenadorAux= new Entrenador(idEntrenador, nombre,apellido,dni,fechaNacimiento,estrategiaFavorita);
+		
+		return entrenadores.add(entrenadorAux);
+		
+	
+	}
+	
+	
+	
 	public boolean agregarJugador(int idJugador, String nombre, String apellido, String dni, LocalDate fechaNacimiento,
 			double estatura, double peso, String posicion, int numeroCamiseta)throws Exception {
 		
@@ -63,6 +89,29 @@ public class Sistema {
 		}
 		return jugadorAux;
 	}
+	
+	public Entrenador traerEntrenadorDni(String dni) {
+		
+		int indice= 0;
+		boolean encontrado = false;
+		Entrenador entrenadorAux=null;
+		
+		if (!entrenadores.isEmpty()) {
+			
+			while(indice<entrenadores.size()&& !encontrado) {
+				if(entrenadores.get(indice).getDni()==dni) {
+					encontrado = true;
+					entrenadorAux= entrenadores.get(indice);
+				}
+				indice++;
+			}
+		
+		}
+		return entrenadorAux;
+	}
+	
+	
+	
 	
 	public Jugador traerJugadorDni(String dni) {
 		

@@ -1,12 +1,9 @@
 package modelo;
 
-
-///HOLA SOY JOAQUIN
-
 import java.time.LocalDate;
 
 public class Entrenador {
-	private int idJugador;
+	private int idEntrenador;
 	private String nombre;
 	private String apellido;
 	private String dni;
@@ -14,10 +11,10 @@ public class Entrenador {
 	private String estrategiaFavorita;
 	
 	
-	public Entrenador(int idJugador, String nombre, String apellido, String dni, LocalDate fechaNacimiento,
+	public Entrenador(int idEntrenador, String nombre, String apellido, String dni, LocalDate fechaNacimiento,
 			String estrategiaFavorita) {
 		super();
-		this.idJugador = idJugador;
+		this.idEntrenador = idEntrenador;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
@@ -27,14 +24,14 @@ public class Entrenador {
 
 
 
-	public int getIdJugador() {
-		return idJugador;
+	public int getIdEntrenador() {
+		return idEntrenador;
 	}
 
 
 
-	public void setIdJugador(int idJugador) {
-		this.idJugador = idJugador;
+	public void setIdEntrenador(int idEntrenador) {
+		this.idEntrenador = idEntrenador;
 	}
 
 
@@ -101,7 +98,7 @@ public class Entrenador {
 
 	@Override
 	public String toString() {
-		return "Entrenador [idJugador=" + idJugador + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+		return "Entrenador [idEntrenador=" + idEntrenador + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
 				+ ", fechaNacimiento=" + fechaNacimiento + ", estrategiaFavorita=" + estrategiaFavorita + "]";
 	}
 	
