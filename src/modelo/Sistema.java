@@ -19,6 +19,10 @@ public class Sistema {
 	}
 	
 	
+
+
+	
+	
 	public boolean agregarEntrenador(int idEntrenador, String nombre, String apellido, String dni, LocalDate fechaNacimiento,
 			String estrategiaFavorita)throws Exception {
 		
@@ -45,7 +49,7 @@ public class Sistema {
 	
 	
 	
-	public boolean agregarJugador(int idJugador, String nombre, String apellido, String dni, LocalDate fechaNacimiento,
+	public boolean agregarJugador(String nombre, String apellido, String dni, LocalDate fechaNacimiento,
 			double estatura, double peso, String posicion, int numeroCamiseta)throws Exception {
 		
 		Jugador jugadorABuscar= traerJugadorDni(dni) ;
@@ -62,7 +66,7 @@ public class Sistema {
 				
 		}
 		
-		Jugador jugadorAux= new Jugador(idJugador, nombre,apellido,dni,fechaNacimiento,estatura,peso,posicion,numeroCamiseta);
+		Jugador jugadorAux= new Jugador(id+1,nombre,apellido,dni,fechaNacimiento,estatura,peso,posicion,numeroCamiseta);
 		
 		return jugadores.add(jugadorAux);
 		
