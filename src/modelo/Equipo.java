@@ -28,8 +28,8 @@ public class Equipo {
 	
 	@Override
 	public String toString() {
-		return  idEquipo + ", codigo=" + codigo + ", nombre=" + nombre + ", jugadores=" + jugadores
-				+ ", entrenador: " + this.getEntrenador().getApellido()+" "+ this.getEntrenador().getNombre()+ "\n";
+		return  "\n" + ", codigo=" + codigo + ", Nombre: " + nombre + "\n Lista de jugadores:\n" + jugadores
+				+ "  \nEntrenador: " + this.getEntrenador().getApellido()+" "+ this.getEntrenador().getNombre()+ "\n";
 	}
 	public int getIdEquipo() {
 		return idEquipo;

@@ -30,7 +30,7 @@ public class Jugador {
 	}
 	@Override
 	public String toString() {
-		return  +idJugador + " "+nombre +" "+ apellido +"    "+ dni + "      "+fechaNacimiento  +"     "+ estatura+"m." + "     "+peso +"kg."+ "      "+posicion + "      N°" + numeroCamiseta + "\n";
+		return    " "+nombre +" "+ apellido +"    "+ dni + "      "+fechaNacimiento  +"     "+ estatura+"m." + "     "+peso +"kg."+ "      "+posicion + "      N°" + numeroCamiseta + "\n";
 	}
 	public int getIdJugador() {
 		return idJugador;

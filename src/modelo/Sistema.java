@@ -21,9 +21,9 @@ public class Sistema {
 	
 	public List<Jugador> listaPorFechaNacimiento(LocalDate inicio, LocalDate fin) {
 		
-		List<Jugador> jugadoresAux = new ArrayList<>();
+		List<Jugador> jugadoresAux = new ArrayList<>(); 
 		
-		int indice= 0;
+		int indice= 0; 
 		
 		if (!jugadores.isEmpty()) {
 			
@@ -91,17 +91,14 @@ public class Sistema {
 	
 	
 	
-	/*public void  agregarJugadorEquipo(Jugador jugador, int idEquipo) throws Exception {
+	public boolean  agregarJugadorEquipo(Jugador jugador, int idEquipo) throws Exception {
 		
-		Equipo equiporABuscar= traerEquipoIdd(idEquipo) ;
+		Equipo equipoABuscar= traerEquipoId(idEquipo) ;
 		
-		if(equiporABuscar == null)throw new Exception("No existe ese equipo");
+		if(equipoABuscar == null)throw new Exception("No existe ese equipo");
 		
-		
-		
-		
-	}*/
-	
+		return equipos.get(idEquipo-1).getJugadores().add(jugador);
+	}
 
 	
 	public boolean borrarEquipo(int id)throws Exception {
