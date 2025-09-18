@@ -39,18 +39,16 @@ public class Sistema {
 	
 	
 	
-	public boolean agregarTorneoAEquipo(String dniJugador, int idEquipo) throws Exception {
-	    Equipo equipo = traerEquipoId(idEquipo);
+	public boolean agregarEquipoATorneo(String nombreEquipo, int idTorneo) throws Exception {
+	    Torneo torneo = traerTorneoId(idTorneo);
+	    if (torneo == null) throw new Exception("No existe torneo");
+
+	    Equipo equipo = traerEquipoNombre(nombreEquipo);
 	    if (equipo == null) throw new Exception("No existe equipo");
 
-	    Jugador jugador = traerJugadorDni(dniJugador);
-	    if (jugador == null) throw new Exception("No existe jugador");
+	    
 
-	    for (Equipo e : equipos)
-	        if (e.tieneJugador(dniJugador))
-	            throw new Exception("El jugador ya pertenece a " + e.getCodigo());
-
-	    return equipo.agregarJugador(jugador);
+	    return torneo.agregarEquipo(equipo);
 	}
 
 	
@@ -205,6 +203,29 @@ public class Sistema {
 		return equipoAux;
 	}
 	
+	
+	
+	public Equipo traerEquipoNombre(String nombre) {
+	    
+	    int indice = 0;
+	    boolean encontrado = false;
+	    Equipo equipoAux = null;
+
+	    if (!equipos.isEmpty()) {
+
+	        while (indice < equipos.size() && !encontrado) {
+	            if (equipos.get(indice).getNombre().equalsIgnoreCase(nombre)) {
+	                encontrado = true;
+	                equipoAux = equipos.get(indice);
+	            }
+	            indice++;
+	        }
+
+	    }
+
+	    return equipoAux;
+	}
+
 	
 	public boolean agregarEquipo(String nombre,Entrenador entrenador) {
 		

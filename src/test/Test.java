@@ -56,11 +56,12 @@ public class Test {
             
             sys.agregarTorneo("torneo1","invierno",LocalDate.of(1993, 5, 13), LocalDate.of(1994, 5, 13));
             
+            sys.agregarEquipoATorneo("Banfield", 1);
             
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(sys.getTorneos());
+        System.out.println(sys.getTorneos()); //MUESTRA EL TORNEO CON SUS RESPECTIVOS EQUIPOS
         System.out.println(sys.getEquipos());
     }
 }
