@@ -15,12 +15,25 @@ public class Test {
 			
 			sys.agregarJugador("Romelu","Lukaku","36896458",fechaActual,1.91, 93, "Delantero", 9 );
 			
+			sys.agregarJugador("Martin","Palermo","30896458",fechaActual,1.91, 93, "Delantero", 9 );
+			
 			//sys.agregarJugador(1,"Ricado","Bochini","10896458",fechaActual,1.68, 67, "Delantero", 10 );
 			
 			sys.agregarEntrenador("Sabella","Alejandro ","10896451",fechaActual,"Defensivo" );
 			sys.agregarEntrenador("Guardiola","Pep","10896452",fechaActual,"tiki taka" );
-			sys.agregarEquipo("Lns", "Lanus", sys.traerEntrenadorDni("10896452"));
-			sys.agregarEquipo("Ban", "Banfield", sys.traerEntrenadorDni("10896451"));
+			sys.agregarEntrenador("Basile","Coco","1896452",fechaActual,"futbol champan" );
+			
+			System.out.println(sys.getJugadores());
+			System.out.println(sys.getEntrenadores());
+			
+			sys.borrarJugador(3);
+			
+			sys.borrarEntrenador(3);
+			sys.agregarEquipo("Lns", "Lanus", sys.traerEntrenadorId(1));
+			
+			//sys.agregarJugadorEquipo(sys.traerJugadorDni("10896458"), 1);
+			
+			sys.agregarEquipo("Ban", "Banfield", sys.traerEntrenadorId(2));
 			
 			
 			

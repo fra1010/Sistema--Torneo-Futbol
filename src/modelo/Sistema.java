@@ -19,6 +19,68 @@ public class Sistema {
 	}
 	
 	
+	
+	
+	
+	public Torneo traerTorneorId(int id) {
+		
+		int indice= 0;
+		boolean encontrado = false;
+		Torneo TorneoAux=null;
+		
+		if (!torneos.isEmpty()) {
+			
+			while(indice<torneos.size()&& !encontrado) {
+				if(torneos.get(indice).getIdTorneo()==id) {
+					encontrado = true;
+					TorneoAux= torneos.get(indice);
+				}
+				indice++;
+			}
+		
+		}
+		return TorneoAux;
+	}
+	
+
+	
+	
+	
+	
+	
+	/*public void  agregarJugadorEquipo(Jugador jugador, int idEquipo) throws Exception {
+		
+		Equipo equiporABuscar= traerEquipoIdd(idEquipo) ;
+		
+		if(equiporABuscar == null)throw new Exception("No existe ese equipo");
+		
+		
+		
+		
+	}*/
+	
+	public Equipo traerEquipoIdd(int id) {
+		
+		int indice= 0;
+		boolean encontrado = false;
+		Equipo equipoAux=null;
+		
+		if (!equipos.isEmpty()) {
+			
+			while(indice<equipos.size()&& !encontrado) {
+				if(equipos.get(indice).getIdEquipo()==id) {
+					encontrado = true;
+					equipoAux= equipos.get(indice);
+				}
+				indice++;
+			}
+		
+		}
+		return equipoAux;
+	}
+	
+	
+	
 	public boolean agregarEquipo(String codigo, String nombre,Entrenador entrenador) {
 		
 		int id=0;
@@ -38,6 +100,14 @@ public class Sistema {
 	
 	}
 	
+	public boolean borrarEntrenador(int id)throws Exception {
+		
+		Entrenador entrenadorABuscar= traerEntrenadorId(id) ;
+		
+		if(entrenadorABuscar==null) throw new Exception("Error, el entrenador no existe" );
+		
+		return entrenadores.remove(entrenadorABuscar);
+	}
 	
 	
 	public boolean agregarEntrenador(String nombre, String apellido, String dni, LocalDate fechaNacimiento,
@@ -65,6 +135,59 @@ public class Sistema {
 	}
 	
 	
+	public Entrenador traerEntrenadorDni(String dni) {
+		
+		int indice= 0;
+		boolean encontrado = false;
+		Entrenador entrenadorAux=null;
+		
+		if (!entrenadores.isEmpty()) {
+			
+			while(indice<entrenadores.size()&& !encontrado) {
+				if(entrenadores.get(indice).getDni()==dni) {
+					encontrado = true;
+					entrenadorAux= entrenadores.get(indice);
+				}
+				indice++;
+			}
+		
+		}
+		return entrenadorAux;
+	}
+	
+
+	
+	
+	public Entrenador traerEntrenadorId(int id) {
+		
+		int indice= 0;
+		boolean encontrado = false;
+		Entrenador entrenadorAux=null;
+		
+		if (!entrenadores.isEmpty()) {
+			
+			while(indice<entrenadores.size()&& !encontrado) {
+				if(entrenadores.get(indice).getIdEntrenador()==id) {
+					encontrado = true;
+					entrenadorAux= entrenadores.get(indice);
+				}
+				indice++;
+			}
+		
+		}
+		return entrenadorAux;
+	}
+	
+	
+	public boolean borrarJugador(int id)throws Exception {
+		
+		Jugador jugadorABuscar= traerJugadorId(id) ;
+		
+		if(jugadorABuscar==null) throw new Exception("Error, el jugador no existe" );
+		
+		return jugadores.remove(jugadorABuscar);
+	}
+	
 	
 	public boolean agregarJugador(String nombre, String apellido, String dni, LocalDate fechaNacimiento,
 			double estatura, double peso, String posicion, int numeroCamiseta)throws Exception {
@@ -90,7 +213,6 @@ public class Sistema {
 	
 	}
 	
-	
 	public Jugador traerJugadorId(int id) {
 		
 		int indice= 0;
@@ -111,26 +233,7 @@ public class Sistema {
 		return jugadorAux;
 	}
 	
-	public Entrenador traerEntrenadorDni(String dni) {
-		
-		int indice= 0;
-		boolean encontrado = false;
-		Entrenador entrenadorAux=null;
-		
-		if (!entrenadores.isEmpty()) {
-			
-			while(indice<entrenadores.size()&& !encontrado) {
-				if(entrenadores.get(indice).getDni()==dni) {
-					encontrado = true;
-					entrenadorAux= entrenadores.get(indice);
-				}
-				indice++;
-			}
-		
-		}
-		return entrenadorAux;
-	}
-	
+
 	
 	
 	

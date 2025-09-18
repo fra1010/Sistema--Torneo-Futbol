@@ -19,10 +19,17 @@ public class Equipo {
 		this.entrenador = entrenador;
 	}
 	
+	public Equipo(Jugador jugador) {
+		super();
+		this.jugadores = new ArrayList<Jugador>();
+	}
+	
+	
+	
 	@Override
 	public String toString() {
-		return "Equipo [idEquipo=" + idEquipo + ", codigo=" + codigo + ", nombre=" + nombre + ", jugadores=" + jugadores
-				+ ", entrenador=" + entrenador + "]";
+		return  idEquipo + ", codigo=" + codigo + ", nombre=" + nombre + ", jugadores=" + jugadores
+				+ ", entrenador: " + this.getEntrenador().getApellido()+" "+ this.getEntrenador().getNombre()+ "\n";
 	}
 	public int getIdEquipo() {
 		return idEquipo;
