@@ -19,8 +19,25 @@ public class Sistema {
 	}
 	
 	
-
-
+	public boolean agregarEquipo(String codigo, String nombre,Entrenador entrenador) {
+		
+		int id=0;
+		
+		if(equipos.size()>0) {
+			int ultimoIndice= equipos.size()-1;
+			
+			Equipo ultimoEquipo= equipos.get(ultimoIndice);
+			id= ultimoEquipo.getIdEquipo();
+				
+		}
+		
+		Equipo equipoAux= new Equipo(id+1, codigo,nombre,entrenador);
+		
+		return equipos.add(equipoAux);
+		
+	
+	}
+	
 	
 	
 	public boolean agregarEntrenador(String nombre, String apellido, String dni, LocalDate fechaNacimiento,

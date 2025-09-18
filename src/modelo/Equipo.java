@@ -10,7 +10,7 @@ public class Equipo {
 	private List<Jugador> jugadores;
 	private Entrenador entrenador;
 	
-	public Equipo(int idEquipo, String codigo, String nombre, List<Jugador> jugadores, Entrenador entrenador) {
+	public Equipo(int idEquipo, String codigo, String nombre, Entrenador entrenador) {
 		super();
 		this.idEquipo = idEquipo;
 		this.codigo = codigo;

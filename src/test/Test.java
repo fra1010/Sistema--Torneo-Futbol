@@ -19,8 +19,10 @@ public class Test {
 			
 			sys.agregarEntrenador("Sabella","Alejandro ","10896451",fechaActual,"Defensivo" );
 			sys.agregarEntrenador("Guardiola","Pep","10896452",fechaActual,"tiki taka" );
+			sys.agregarEquipo("Lns", "Lanus", sys.traerEntrenadorDni("10896452"));
+			sys.agregarEquipo("Ban", "Banfield", sys.traerEntrenadorDni("10896451"));
 			
-			//PEEPE
+			
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -29,6 +31,7 @@ public class Test {
 		
 		System.out.println(sys.getJugadores());
 		System.out.println(sys.getEntrenadores());
+		System.out.println(sys.getEquipos());
 	}
 
 }
