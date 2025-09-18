@@ -10,16 +10,16 @@ public class Equipo {
 	private List<Jugador> jugadores;
 	private Entrenador entrenador;
 	
-	public Equipo(int idEquipo, String codigo, String nombre, Entrenador entrenador) {
+	public Equipo(int idEquipo, String nombre, Entrenador entrenador) {
 		super();
 		this.idEquipo = idEquipo;
-		this.codigo = codigo;
+		setCodigo(nombre);
 		this.nombre = nombre;
 		this.jugadores = new ArrayList<Jugador>();
 		this.entrenador = entrenador;
 	}
 	
-	public Equipo(Jugador jugador) {
+	public Equipo(Jugador jugador) { 
 		super();
 		this.jugadores = new ArrayList<Jugador>();
 	}
@@ -44,9 +44,21 @@ public class Equipo {
 	
 	@Override
 	public String toString() {
-		return  "\n" + ", codigo=" + codigo + ", Nombre: " + nombre + "\n Lista de jugadores:\n" + jugadores
-				+ "  \nEntrenador: " + this.getEntrenador().getApellido()+" "+ this.getEntrenador().getNombre()+ "\n";
+		
+		String retorno;
+		
+	if(this.getEntrenador()==null){  
+		retorno= "codigo=" + codigo  +", Nombre: " + nombre + "\n Lista de jugadores:\n" + jugadores + " \nNo hay entrenador\n\n";
 	}
+	else
+		retorno=  "codigo=" + codigo + ", Nombre: " + nombre + "\n Lista de jugadores:\n" + jugadores
+	
+				+ "  \nEntrenador: " + this.getEntrenador().getApellido()+" "+ this.getEntrenador().getNombre()+ "\n\n";
+		return retorno;
+	
+	}
+	
+	
 	public int getIdEquipo() {
 		return idEquipo;
 	}
@@ -56,8 +68,19 @@ public class Equipo {
 	public String getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCodigo(String nombre) {
+	  
+
+	    if (nombre != null && nombre.length() >= 3) {
+	        // Toma las primeras 3 letras del nombre
+	        this.codigo = nombre.substring(0, 3).toUpperCase();
+	    } else if (nombre != null && nombre.length() < 3) {
+	        // Si el nombre tiene menos de 3 letras, usamos todo el nombre
+	        this.codigo = nombre.toUpperCase();
+	    } else {
+	        // Si el nombre es nulo, puedes lanzar una excepción o asignar un valor por defecto
+	        this.codigo = "no tiene nombre"; // Valor por defecto, puedes cambiarlo según convenga
+	    }
 	}
 	public String getNombre() {
 		return nombre;
@@ -77,6 +100,7 @@ public class Equipo {
 	public void setEntrenador(Entrenador entrenador) {
 		this.entrenador = entrenador;
 	}
+	 
 	
 	
 }

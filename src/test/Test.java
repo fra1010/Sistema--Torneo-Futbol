@@ -29,17 +29,17 @@ public class Test {
             sys.agregarEntrenador("Basile","Coco","1896452", LocalDate.now(), "futbol champan");
             sys.agregarEntrenador("Simeone","Diego","20896451", LocalDate.now(), "Defensivo");
             
-            System.out.println("LISTA FECHA NACIMIENTO:");
+          /* System.out.println("LISTA FECHA NACIMIENTO:");
             System.out.println(sys.listaPorFechaNacimiento(LocalDate.of(1960, 1, 25), LocalDate.now()));
             
             System.out.println("LISTA TACTICA PREFERIDA:");
-            System.out.println(sys.listaTacticaPreferida("Defensivo"));
+            System.out.println(sys.listaTacticaPreferida("Defensivo"));*/
             
             // Equipos (CAMBIO: pasar DNI del DT)
-            sys.agregarEquipo("Lns", "Lanus", sys.traerEntrenadorId(1)); // id:1  
+            sys.agregarEquipo( "Lanus", sys.traerEntrenadorId(1)); // id:1  
             // sys.agregarJugadorAEquipo("10896458", 1);    // ejemplo por DNI (opcional)
             
-            sys.agregarEquipo("Ban", "Banfield", sys.traerEntrenadorId(2)); // id:2
+            sys.agregarEquipo( "Banfield", sys.traerEntrenadorId(2)); // id:2
             
             // Asignar jugadores a equipos (CAMBIO: usar método por DNI)
             sys.agregarJugadorAEquipo("30896458", 1); // Palermo -> Lanus
@@ -47,16 +47,20 @@ public class Test {
             sys.agregarJugadorAEquipo("36896458", 2); // Lukaku  -> Banfield
             sys.agregarJugadorAEquipo("10896468", 1); // Ribéry  -> Lanus
             
-            System.out.println(sys.getEquipos());
+            //System.out.println(sys.getEquipos());
             
             // Borrar jugador de equipo (se mantiene igual, por idJugador e idEquipo)
             sys.borrarJugadorEquipo(1, 2); // saca a Bochini (id=1) de Banfield (id=2)
             sys.borrarJugadorEquipo(4, 1); // saca a Ribéry  (id=4) de Lanus    (id=1)
+            sys.borrarEntrenadorEquipo(1);
+            
+            sys.agregarTorneo("torneo1","invierno",LocalDate.of(1993, 5, 13), LocalDate.of(1994, 5, 13));
+            
             
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+        System.out.println(sys.getTorneos());
         System.out.println(sys.getEquipos());
     }
 }
