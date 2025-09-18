@@ -87,7 +87,17 @@ public class Sistema {
 	
 
 	
-	
+	public boolean  borrarJugadorEquipo(int idjugador, int idEquipo) throws Exception {
+		
+		Equipo equipoABuscar= traerEquipoId(idEquipo) ;
+		Jugador jugadorABuscar=traerJugadorId(idjugador);
+		
+		if(equipoABuscar == null)throw new Exception("No existe ese equipo");
+		
+		if(jugadorABuscar == null)throw new Exception("No existe ese jugador");
+		
+		return equipos.get(idEquipo-1).getJugadores().remove(jugadorABuscar);
+	}
 	
 	
 	
