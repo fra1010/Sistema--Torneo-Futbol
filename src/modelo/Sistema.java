@@ -18,6 +18,10 @@ public class Sistema {
 		this.torneos = new ArrayList<Torneo>();
 	}
 	
+	
+
+
+	
 	public boolean agregarTorneo(String nombre,String temporada,LocalDate fechaInicio,LocalDate fechaFin ) {
 		
 		int id=0;
@@ -61,8 +65,8 @@ public class Sistema {
 		
 		if (!jugadores.isEmpty()) {
 			
-			while(indice<jugadores.size()) {
-				if(jugadores.get(indice).getFechaNacimiento().isAfter(inicio)==true && jugadores.get(indice).getFechaNacimiento().isBefore(fin)==true) {
+			while(indice<jugadores.size()) {///revisar while por for
+				if(jugadores.get(indice).getFechaNacimiento().isAfter(inicio)==true && jugadores.get(indice).getFechaNacimiento().isBefore(fin)==true) {//arreglar true
 					
 					jugadoresAux.add(jugadores.get(indice));
 				}

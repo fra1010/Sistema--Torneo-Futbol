@@ -27,6 +27,45 @@ public class Torneo {
 		this.partidos = new ArrayList<Partido>();
 	}
 	
+	public boolean agregarPartido(LocalDate fecha,Equipo equipoLocal,Equipo equipoVisitante,String estadio) {
+			
+		int id=0;
+		
+		if(partidos.size()>0) {
+			int ultimoIndice= partidos.size()-1;
+			
+			Partido ultimoPartido= partidos.get(ultimoIndice);
+			id= ultimoPartido.getIdPartido();
+				
+		}
+		
+		Partido partidoAux= new Partido(id+1,fecha,equipoLocal,equipoVisitante,estadio);
+		
+		return partidos.add(partidoAux);
+		
+	}
+	
+	
+	public Partido traerPartidoId(int id) {
+		
+		int indice= 0;
+		boolean encontrado = false;
+		Partido partidoAux=null;
+		
+		if (!partidos.isEmpty()) {
+			
+			while(indice<partidos.size()&& !encontrado) {
+				if(partidos.get(indice).getIdPartido()==id) {
+					encontrado = true;
+					partidoAux= partidos.get(indice);
+				}
+				indice++;
+			}
+		
+		}
+		return partidoAux;
+	}
+	
 	
 	
 	public boolean tieneEquipo(int idEquipo) {

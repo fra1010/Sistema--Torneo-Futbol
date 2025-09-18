@@ -14,8 +14,7 @@ public class Partido {
     
     
     
-	public Partido(int idPartido, LocalDate fecha, Equipo equipoLocal, Equipo equipoVisitante, String estadio,
-			List<Estadistica> estadisticas) {
+	public Partido(int idPartido, LocalDate fecha, Equipo equipoLocal, Equipo equipoVisitante, String estadio) {
 		super();
 		this.idPartido = idPartido;
 		this.fecha = fecha;
