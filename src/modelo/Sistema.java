@@ -19,9 +19,32 @@ public class Sistema {
 	}
 	
 	
+	public List<Jugador> listaPorFechaNacimiento(LocalDate inicio, LocalDate fin) {
+		
+		List<Jugador> jugadoresAux = new ArrayList<>();
+		
+		int indice= 0;
+		
+		if (!jugadores.isEmpty()) {
+			
+			while(indice<jugadores.size()) {
+				if(jugadores.get(indice).getFechaNacimiento().isAfter(inicio)==true && jugadores.get(indice).getFechaNacimiento().isBefore(fin)==true) {
+					
+					jugadoresAux.add(jugadores.get(indice));
+				}
+				indice++;
+			}
+		
+		}
+		
+		return jugadoresAux;
+	}
+	
+	
+	
 	public List<Entrenador> listaTacticaPreferida(String tactica) {
 		
-		List<Entrenador> entrenadorAux = new ArrayList<>();
+		List<Entrenador> entrenadoresAux = new ArrayList<>();
 		
 		int indice= 0;
 		
@@ -30,14 +53,14 @@ public class Sistema {
 			while(indice<entrenadores.size()) {
 				if(entrenadores.get(indice).getEstrategiaFavorita().equals(tactica)) {
 					
-					entrenadorAux.add(entrenadores.get(indice));
+					entrenadoresAux.add(entrenadores.get(indice));
 				}
 				indice++;
 			}
 		
 		}
 		
-		return entrenadorAux;
+		return entrenadoresAux;
 	}
 	
 	
