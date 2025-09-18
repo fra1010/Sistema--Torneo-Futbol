@@ -26,6 +26,22 @@ public class Equipo {
 	
 	
 	
+	public boolean tieneJugador(String dni) {
+	    for (Jugador j : jugadores) if (j.getDni().equals(dni)) return true; // equals!
+	    return false;
+	}
+
+	public boolean agregarJugador(Jugador j) throws Exception {
+	    if (j == null) throw new Exception("Jugador nulo");
+	    if (tieneJugador(j.getDni())) throw new Exception("Jugador ya está en este equipo");
+	    // (opcional) validar número de camiseta único acá
+	    jugadores.add(j);
+	    return true;
+	}
+	
+	
+	
+	
 	@Override
 	public String toString() {
 		return  "\n" + ", codigo=" + codigo + ", Nombre: " + nombre + "\n Lista de jugadores:\n" + jugadores

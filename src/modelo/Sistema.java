@@ -100,16 +100,19 @@ public class Sistema {
 	}
 	
 	
-	
-	public boolean  agregarJugadorEquipo(Jugador jugador, int idEquipo) throws Exception {
-		
-		Equipo equipoABuscar= traerEquipoId(idEquipo) ;
-		
-		if(equipoABuscar == null)throw new Exception("No existe ese equipo");
-		
-		return equipos.get(idEquipo-1).getJugadores().add(jugador);
-	}
+	public boolean agregarJugadorAEquipo(String dniJugador, int idEquipo) throws Exception {
+	    Equipo equipo = traerEquipoId(idEquipo);
+	    if (equipo == null) throw new Exception("No existe equipo");
 
+	    Jugador jugador = traerJugadorDni(dniJugador);
+	    if (jugador == null) throw new Exception("No existe jugador");
+
+	    for (Equipo e : equipos)
+	        if (e.tieneJugador(dniJugador))
+	            throw new Exception("El jugador ya pertenece a " + e.getCodigo());
+
+	    return equipo.agregarJugador(jugador);
+	}
 	
 	public boolean borrarEquipo(int id)throws Exception {
 		
@@ -298,25 +301,11 @@ public class Sistema {
 	
 	
 	public Jugador traerJugadorDni(String dni) {
-		
-		int indice= 0;
-		boolean encontrado = false;
-		Jugador jugadorAux=null;
-		
-		if (!jugadores.isEmpty()) {
-			
-			while(indice<jugadores.size()&& !encontrado) {
-				if(jugadores.get(indice).getDni()==dni) {
-					encontrado = true;
-					jugadorAux= jugadores.get(indice);
-				}
-				indice++;
-			}
-		
-		}
-		return jugadorAux;
+	    for (Jugador j : jugadores) {
+	        if (j.getDni().equals(dni)) return j;
+	    }
+	    return null;
 	}
-	
 	
 	
 	
