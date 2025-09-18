@@ -22,9 +22,13 @@ public class Test {
 			sys.agregarEntrenador("Sabella","Alejandro ","10896451",fechaActual,"Defensivo" );
 			sys.agregarEntrenador("Guardiola","Pep","10896452",fechaActual,"tiki taka" );
 			sys.agregarEntrenador("Basile","Coco","1896452",fechaActual,"futbol champan" );
+			sys.agregarEntrenador("Simeone","Diego","20896451",fechaActual,"Defensivo" );
 			
 			System.out.println(sys.getJugadores());
 			System.out.println(sys.getEntrenadores());
+			
+			
+			System.out.println(sys.listaTacticaPreferida("Defensivo"));
 			
 			sys.borrarJugador(3);
 			
@@ -34,6 +38,8 @@ public class Test {
 			//sys.agregarJugadorEquipo(sys.traerJugadorDni("10896458"), 1);
 			
 			sys.agregarEquipo("Ban", "Banfield", sys.traerEntrenadorId(2));
+			
+			
 			
 			
 			

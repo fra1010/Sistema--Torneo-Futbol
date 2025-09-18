@@ -19,10 +19,30 @@ public class Sistema {
 	}
 	
 	
+	public List<Entrenador> listaTacticaPreferida(String tactica) {
+		
+		List<Entrenador> entrenadorAux = new ArrayList<>();
+		
+		int indice= 0;
+		
+		if (!entrenadores.isEmpty()) {
+			
+			while(indice<entrenadores.size()) {
+				if(entrenadores.get(indice).getEstrategiaFavorita().equals(tactica)) {
+					
+					entrenadorAux.add(entrenadores.get(indice));
+				}
+				indice++;
+			}
+		
+		}
+		
+		return entrenadorAux;
+	}
 	
 	
 	
-	public Torneo traerTorneorId(int id) {
+	public Torneo traerTorneoId(int id) {
 		
 		int indice= 0;
 		boolean encontrado = false;
@@ -59,7 +79,18 @@ public class Sistema {
 		
 	}*/
 	
-	public Equipo traerEquipoIdd(int id) {
+
+	
+	public boolean borrarEquipo(int id)throws Exception {
+		
+		Equipo equipoABuscar= traerEquipoId(id) ;
+		
+		if(equipoABuscar==null) throw new Exception("Error, el entrenador no existe" );
+		
+		return equipos.remove(equipoABuscar);
+	}
+	
+	public Equipo traerEquipoId(int id) {
 		
 		int indice= 0;
 		boolean encontrado = false;
@@ -78,7 +109,6 @@ public class Sistema {
 		}
 		return equipoAux;
 	}
-	
 	
 	
 	public boolean agregarEquipo(String codigo, String nombre,Entrenador entrenador) {
