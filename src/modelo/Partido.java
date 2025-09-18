@@ -24,6 +24,11 @@ public class Partido {
 		this.estadio = estadio;
 		this.estadisticas = new ArrayList<Estadistica>();
 	}
+	
+	
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Partido [idPartido=" + idPartido + ", fecha=" + fecha + ", equipoLocal=" + equipoLocal

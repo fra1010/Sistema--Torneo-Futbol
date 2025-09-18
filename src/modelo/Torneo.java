@@ -15,8 +15,8 @@ public class Torneo {
     private List<Partido> partidos;
     
     
-	public Torneo(int idTorneo, String nombre, String temporada, List<Equipo> equipos, LocalDate fechaInicio,
-			LocalDate fechaFin, List<Partido> partidos) {
+	public Torneo(int idTorneo, String nombre, String temporada, LocalDate fechaInicio,
+			LocalDate fechaFin) {
 		super();
 		this.idTorneo = idTorneo;
 		this.nombre = nombre;
@@ -26,6 +26,23 @@ public class Torneo {
 		this.fechaFin = fechaFin;
 		this.partidos = new ArrayList<Partido>();
 	}
+	
+	
+	
+	public boolean tieneEquipo(int idEquipo) {
+	    for (Equipo j : equipos) if (j.getIdEquipo()==idEquipo) return true; // equals!
+	    return false;
+	}
+
+	public boolean agregarEquipo(Equipo j) throws Exception {
+	    if (j == null) throw new Exception("Equipo nulo");
+	    if (tieneEquipo(j.getIdEquipo())) throw new Exception("Equipo ya está en este Torneo");
+	    // (opcional) validar número de camiseta único acá
+	    equipos.add(j);
+	    return true;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Torneo [idTorneo=" + idTorneo + ", nombre=" + nombre + ", temporada=" + temporada + ", equipos="
