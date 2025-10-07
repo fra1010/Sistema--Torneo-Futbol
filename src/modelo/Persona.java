@@ -17,10 +17,7 @@ public class Persona {
 		this.setFechaNacimiento(fechaNacimiento);
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(dni);
-	}
+	
 
 	@Override
 	public boolean equals(Object obj) {

@@ -24,10 +24,10 @@ public class Test {
                     LocalDate.of(1983, 4, 7), 1.68, 67, "Delantero", 7);   // id:4  (CAMBIO: antes era today)
             
             // Entrenadores
-            sys.agregarEntrenador("Sabella","Alejandro","10896451", LocalDate.now(), "Defensivo");
-            sys.agregarEntrenador("Guardiola","Pep","10896452", LocalDate.now(), "tiki taka");
-            sys.agregarEntrenador("Basile","Coco","1896452", LocalDate.now(), "futbol champan");
-            sys.agregarEntrenador("Simeone","Diego","20896451", LocalDate.now(), "Defensivo");
+            sys.agregarEntrenador("Sabella","Alejandro","10896451", LocalDate.of(1954, 11, 5), "Defensivo");
+            sys.agregarEntrenador("Guardiola","Pep","10896452", LocalDate.of(1971, 1, 18), "tiki taka");
+            sys.agregarEntrenador("Basile","Coco","1896452", LocalDate.of(1943, 11, 1), "futbol champan");
+            sys.agregarEntrenador("Simeone","Diego","20896451",LocalDate.of(1970, 4, 28), "Defensivo");
             
           /* System.out.println("LISTA FECHA NACIMIENTO:");
             System.out.println(sys.listaPorFechaNacimiento(LocalDate.of(1960, 1, 25), LocalDate.now()));
