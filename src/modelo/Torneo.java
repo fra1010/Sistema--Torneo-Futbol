@@ -24,7 +24,8 @@ public class Torneo {
 		this.partidos = new ArrayList<Partido>();
 	}
 
-	public boolean agregarPartido(LocalDate fecha, Equipo equipoLocal, Equipo equipoVisitante, String estadio) {
+	public boolean agregarPartido(LocalDate fecha, Equipo equipoLocal, Equipo equipoVisitante, String estadio)
+			throws Exception {
 
 		int id = 0;
 

@@ -17,8 +17,6 @@ public class Persona {
 		this.setFechaNacimiento(fechaNacimiento);
 	}
 
-	
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -52,7 +50,7 @@ public class Persona {
 	}
 
 	public void setDni(String dni) throws Exception {
-	
+
 		String strValido = dni.replaceAll("[^0-9]", "");
 
 		if (strValido.length() < 7 || strValido.length() > 8)

@@ -12,12 +12,18 @@ public class Partido {
 	private String estadio;
 	private List<Estadistica> estadisticas;
 
-	public Partido(int idPartido, LocalDate fecha, String equipoLocal, String equipoVisitante, String estadio) {
-		super();
+	public void agregarEstadistica(Estadistica estadistica) {
+
+		estadisticas.add(estadistica);
+	}
+
+	public Partido(int idPartido, LocalDate fecha, String equipoLocal, String equipoVisitante, String estadio)
+			throws Exception {
+
 		this.idPartido = idPartido;
 		this.fecha = fecha;
 		this.equipoLocal = equipoLocal;
-		this.equipoVisitante = equipoVisitante;
+		this.setEquipoVisitante(equipoVisitante);
 		this.estadio = estadio;
 		this.estadisticas = new ArrayList<Estadistica>();
 	}
@@ -57,7 +63,10 @@ public class Partido {
 		return equipoVisitante;
 	}
 
-	public void setEquipoVisitante(String equipoVisitante) {
+	public void setEquipoVisitante(String equipoVisitante) throws Exception {
+
+		if (equipoVisitante.equals(equipoLocal))
+			throw new Exception("Error el equipo local y visitante son el mismo");
 		this.equipoVisitante = equipoVisitante;
 	}
 

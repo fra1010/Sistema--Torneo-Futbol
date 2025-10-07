@@ -18,6 +18,9 @@ public class Estadistica {
 		this.jugador = jugador;
 	}
 	
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Estadistica [idEstadistica=" + idEstadistica + ", goles=" + goles + ", asistencias=" + asistencias
