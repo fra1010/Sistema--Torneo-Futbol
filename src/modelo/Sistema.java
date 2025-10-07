@@ -1,0 +1,390 @@
+package modelo;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Sistema {
+	private List<Jugador> jugadores;
+	private List<Entrenador> entrenadores;
+	private List<Equipo> equipos;
+	private List<Torneo> torneos;
+
+	public Sistema() {
+		super();
+		this.jugadores = new ArrayList<Jugador>();
+		this.entrenadores = new ArrayList<Entrenador>();
+		this.equipos = new ArrayList<Equipo>();
+		this.torneos = new ArrayList<Torneo>();
+	}
+
+	public boolean agregarTorneo(String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin) {
+
+		int id = 0;
+
+		if (torneos.size() > 0) {
+			int ultimoIndice = torneos.size() - 1;
+
+			Torneo ultimoTorneo = torneos.get(ultimoIndice);
+			id = ultimoTorneo.getIdTorneo();
+
+		}
+
+		Torneo torneoAux = new Torneo(id + 1, nombre, temporada, fechaInicio, fechaFin);
+
+		return torneos.add(torneoAux);
+
+	}
+
+	public boolean agregarEquipoATorneo(String nombreEquipo, int idTorneo) throws Exception {
+		Torneo torneo = traerTorneoId(idTorneo);
+		if (torneo == null)
+			throw new Exception("No existe torneo");
+
+		Equipo equipo = traerEquipoNombre(nombreEquipo);
+		if (equipo == null)
+			throw new Exception("No existe equipo");
+
+		return torneo.agregarEquipo(equipo);
+	}
+
+
+	public List<Jugador> listaPorFechaNacimiento(LocalDate inicio, LocalDate fin) {
+
+		List<Jugador> jugadoresAux = new ArrayList<>();
+
+		for (Jugador j : jugadores) {
+			if (((j.getFechaNacimiento().isAfter(inicio) && j.getFechaNacimiento().equals(inicio))
+					&& (j.getFechaNacimiento().isBefore(fin) && j.getFechaNacimiento().equals(fin)))) {
+				jugadoresAux.add(j);
+
+			}
+
+		}
+
+		return jugadoresAux;
+	}
+
+	public List<Entrenador> listaTacticaPreferida(String tactica) {
+
+		List<Entrenador> entrenadoresAux = new ArrayList<>();
+
+		int indice = 0;
+
+		if (!entrenadores.isEmpty()) {
+
+			while (indice < entrenadores.size()) {
+				if (entrenadores.get(indice).getEstrategiaFavorita().equalsIgnoreCase(tactica)) {
+
+					entrenadoresAux.add(entrenadores.get(indice));
+				}
+				indice++;
+			}
+
+		}
+
+		return entrenadoresAux;
+	}
+
+	public Torneo traerTorneoId(int id) {
+
+		int indice = 0;
+		boolean encontrado = false;
+		Torneo TorneoAux = null;
+
+		if (!torneos.isEmpty()) {
+
+			while (indice < torneos.size() && !encontrado) {
+				if (torneos.get(indice).getIdTorneo() == id) {
+					encontrado = true;
+					TorneoAux = torneos.get(indice);
+				}
+				indice++;
+			}
+
+		}
+		return TorneoAux;
+	}
+
+	public boolean borrarJugadorEquipo(int idjugador, int idEquipo) throws Exception {
+
+		Equipo equipoABuscar = traerEquipoId(idEquipo);
+		Jugador jugadorABuscar = traerJugadorId(idjugador);
+
+		if (equipoABuscar == null)
+			throw new Exception("No existe ese equipo");
+
+		if (jugadorABuscar == null)
+			throw new Exception("No existe ese jugador");
+
+		return equipos.get(idEquipo - 1).getJugadores().remove(jugadorABuscar);
+	}
+
+	public void borrarEntrenadorEquipo(int idEquipo) throws Exception {
+
+		Equipo equipoABuscar = traerEquipoId(idEquipo);
+
+		if (equipoABuscar == null)
+			throw new Exception("No existe ese equipo");
+		if (equipoABuscar.getEntrenador() == null) {
+			throw new Exception("Este equipo no tiene entrenador asignado.");
+		}
+
+		equipoABuscar.setEntrenador(null);
+	}
+
+	public boolean agregarJugadorAEquipo(String dniJugador, int idEquipo) throws Exception {
+		Equipo equipo = traerEquipoId(idEquipo);
+		if (equipo == null)
+			throw new Exception("No existe equipo");
+
+		Jugador jugador = traerJugadorDni(dniJugador);
+		if (jugador == null)
+			throw new Exception("No existe jugador");
+
+		for (Equipo e : equipos)
+			if (e.tieneJugador(dniJugador))
+				throw new Exception("El jugador ya pertenece a " + e.getCodigo());
+
+		return equipo.agregarJugador(jugador);
+	}
+
+	public boolean borrarEquipo(int id) throws Exception {
+
+		Equipo equipoABuscar = traerEquipoId(id);
+
+		if (equipoABuscar == null)
+			throw new Exception("Error, el entrenador no existe");
+
+		return equipos.remove(equipoABuscar);
+	}
+
+	public Equipo traerEquipoId(int id) {
+
+		int indice = 0;
+		boolean encontrado = false;
+		Equipo equipoAux = null;
+
+		if (!equipos.isEmpty()) {
+
+			while (indice < equipos.size() && !encontrado) {
+				if (equipos.get(indice).getIdEquipo() == id) {
+					encontrado = true;
+					equipoAux = equipos.get(indice);
+				}
+				indice++;
+			}
+
+		}
+		return equipoAux;
+	}
+
+	public Equipo traerEquipoNombre(String nombre) {
+
+		int indice = 0;
+		boolean encontrado = false;
+		Equipo equipoAux = null;
+
+		if (!equipos.isEmpty()) {
+
+			while (indice < equipos.size() && !encontrado) {
+				if (equipos.get(indice).getNombre().equalsIgnoreCase(nombre)) {
+					encontrado = true;
+					equipoAux = equipos.get(indice);
+				}
+				indice++;
+			}
+
+		}
+
+		return equipoAux;
+	}
+
+	public boolean agregarEquipo(String nombre, Entrenador entrenador) {
+
+		int id = 0;
+
+		if (equipos.size() > 0) {
+			int ultimoIndice = equipos.size() - 1;
+
+			Equipo ultimoEquipo = equipos.get(ultimoIndice);
+			id = ultimoEquipo.getIdEquipo();
+
+		}
+
+		Equipo equipoAux = new Equipo(id + 1, nombre, entrenador);
+
+		return equipos.add(equipoAux);
+
+	}
+
+	public boolean borrarEntrenador(int id) throws Exception {
+
+		Entrenador entrenadorABuscar = traerEntrenadorId(id);
+
+		if (entrenadorABuscar == null)
+			throw new Exception("Error, el entrenador no existe");
+
+		return entrenadores.remove(entrenadorABuscar);
+	}
+
+	public boolean agregarEntrenador(String nombre, String apellido, String dni, LocalDate fechaNacimiento,
+			String estrategiaFavorita) throws Exception {
+
+		Entrenador entrenadorABuscar = traerEntrenadorDni(dni);
+
+		if (entrenadorABuscar != null)
+			throw new Exception("Error, ya existe un entrenador con dni:" + dni);
+
+		int id = 0;
+
+		if (entrenadores.size() > 0) {
+			int ultimoIndice = entrenadores.size() - 1;
+
+			Entrenador ultimoEntrenador = entrenadores.get(ultimoIndice);
+			id = ultimoEntrenador.getIdEntrenador();
+
+		}
+
+		Entrenador entrenadorAux = new Entrenador(id + 1, nombre, apellido, dni, fechaNacimiento, estrategiaFavorita);
+
+		return entrenadores.add(entrenadorAux);
+
+	}
+
+	public Entrenador traerEntrenadorDni(String dni) {
+
+		int indice = 0;
+		boolean encontrado = false;
+		Entrenador entrenadorAux = null;
+
+		if (!entrenadores.isEmpty()) {
+
+			while (indice < entrenadores.size() && !encontrado) {
+				if (entrenadores.get(indice).getDni() == dni) {
+					encontrado = true;
+					entrenadorAux = entrenadores.get(indice);
+				}
+				indice++;
+			}
+
+		}
+		return entrenadorAux;
+	}
+
+	public Entrenador traerEntrenadorId(int id) {
+
+		int indice = 0;
+		boolean encontrado = false;
+		Entrenador entrenadorAux = null;
+
+		if (!entrenadores.isEmpty()) {
+
+			while (indice < entrenadores.size() && !encontrado) {
+				if (entrenadores.get(indice).getIdEntrenador() == id) {
+					encontrado = true;
+					entrenadorAux = entrenadores.get(indice);
+				}
+				indice++;
+			}
+
+		}
+		return entrenadorAux;
+	}
+
+	public boolean borrarJugador(int id) throws Exception {
+
+		Jugador jugadorABuscar = traerJugadorId(id);
+
+		if (jugadorABuscar == null)
+			throw new Exception("Error, el jugador no existe");
+
+		return jugadores.remove(jugadorABuscar);
+	}
+
+	public boolean agregarJugador(String nombre, String apellido, String dni, LocalDate fechaNacimiento,
+			double estatura, double peso, String posicion, int numeroCamiseta) throws Exception {
+
+		Jugador jugadorABuscar = traerJugadorDni(dni);
+
+		if (jugadorABuscar != null)
+			throw new Exception("Error, ya existe un jugador con dni:" + dni);
+
+		int id = 0;
+
+		if (jugadores.size() > 0) {
+			int ultimoIndice = jugadores.size() - 1;
+
+			Jugador ultimoJugador = jugadores.get(ultimoIndice);
+			id = ultimoJugador.getIdJugador();
+
+		}
+
+		Jugador jugadorAux = new Jugador(id + 1, nombre, apellido, dni, fechaNacimiento, estatura, peso, posicion,
+				numeroCamiseta);
+
+		return jugadores.add(jugadorAux);
+
+	}
+
+	public Jugador traerJugadorId(int id) {
+
+		int indice = 0;
+		boolean encontrado = false;
+		Jugador jugadorAux = null;
+
+		if (!jugadores.isEmpty()) {
+
+			while (indice < jugadores.size() && !encontrado) {
+				if (jugadores.get(indice).getIdJugador() == id) {
+					encontrado = true;
+					jugadorAux = jugadores.get(indice);
+				}
+				indice++;
+			}
+
+		}
+		return jugadorAux;
+	}
+
+	public Jugador traerJugadorDni(String dni) {
+		for (Jugador j : jugadores) {
+			if (j.getDni().equals(dni))
+				return j;
+		}
+		return null;
+	}
+
+	public List<Jugador> getJugadores() {
+		return jugadores;
+	}
+
+	public void setJugadores(List<Jugador> jugadores) {
+		this.jugadores = jugadores;
+	}
+
+	public List<Entrenador> getEntrenadores() {
+		return entrenadores;
+	}
+
+	public void setEntrenadores(List<Entrenador> entrenadores) {
+		this.entrenadores = entrenadores;
+	}
+
+	public List<Equipo> getEquipos() {
+		return equipos;
+	}
+
+	public void setEquipos(List<Equipo> equipos) {
+		this.equipos = equipos;
+	}
+
+	public List<Torneo> getTorneos() {
+		return torneos;
+	}
+
+	public void setTorneos(List<Torneo> torneos) {
+		this.torneos = torneos;
+	}
+
+}
