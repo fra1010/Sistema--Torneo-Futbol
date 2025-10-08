@@ -53,18 +53,20 @@ public class Test {
 			// System.out.println(sys.getEquipos());
 
 			// Borrar jugador de equipo (se mantiene igual, por idJugador e idEquipo)
-			sys.borrarJugadorEquipo(1, 2); // saca a Bochini (id=1) de Banfield (id=2)
-			sys.borrarJugadorEquipo(4, 1); // saca a Ribéry (id=4) de Lanus (id=1)
+			//sys.borrarJugadorEquipo(1, 2); // saca a Bochini (id=1) de Banfield (id=2)
+			//sys.borrarJugadorEquipo(4, 1); // saca a Ribéry (id=4) de Lanus (id=1)
 			sys.borrarEntrenadorEquipo(1);
 
 			sys.agregarTorneo("torneo1", "invierno", LocalDate.of(1993, 5, 13), LocalDate.of(1994, 5, 13));
 
 			sys.agregarEquipoATorneo("Banfield", 1);
+			System.out.println(sys.getEquipos());
+			System.out.println(sys.calcularPromedioAlturaEquipo(1));
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(sys.getTorneos()); // MUESTRA EL TORNEO CON SUS RESPECTIVOS EQUIPOS
-		System.out.println(sys.getEquipos());
+		//System.out.println(sys.getTorneos()); // MUESTRA EL TORNEO CON SUS RESPECTIVOS EQUIPOS
+		//System.out.println(sys.getEquipos());
 	}
 }

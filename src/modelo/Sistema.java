@@ -18,6 +18,23 @@ public class Sistema {
 		this.torneos = new ArrayList<Torneo>();
 	}
 
+	public double calcularPromedioAlturaEquipo(int idEquipo) throws Exception {
+		Equipo equipo = traerEquipoId(idEquipo);
+		if (equipo == null)
+			throw new Exception("Error no existe equipo con ese id.");
+
+		List<Jugador> jugadores = equipo.getJugadores();
+		if (jugadores.isEmpty())
+			throw new Exception("Error el equipo no tiene jugadores.");
+
+		double sum = 0;
+		for (Jugador j : jugadores) {
+			sum=j.getEstatura()+sum;
+		}
+
+		return sum / jugadores.size();
+	}
+
 	public boolean agregarTorneo(String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin) {
 
 		int id = 0;
@@ -47,7 +64,6 @@ public class Sistema {
 
 		return torneo.agregarEquipo(equipo);
 	}
-
 
 	public List<Jugador> listaPorFechaNacimiento(LocalDate inicio, LocalDate fin) {
 

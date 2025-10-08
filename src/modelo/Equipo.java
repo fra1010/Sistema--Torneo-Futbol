@@ -18,6 +18,8 @@ public class Equipo {
 		this.jugadores = new ArrayList<Jugador>();
 		this.entrenador = entrenador;
 	}
+	
+
 
 	public Equipo(Jugador jugador) {
 		super();
