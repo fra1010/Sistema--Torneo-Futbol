@@ -62,6 +62,7 @@ public class Test {
 			System.out.println(sys.calcularPromedioAlturaEquipo(1));
 			System.out.println(sys.calcularPromedioAlturaEquipo(2));
 			System.out.println(sys.equipoConMayorAlturaPromedio(1));
+			System.out.println(sys.buscarEquipoDeJugador(sys.traerJugadorId(1)));
 
 		} catch (Exception e) {
 			e.printStackTrace();

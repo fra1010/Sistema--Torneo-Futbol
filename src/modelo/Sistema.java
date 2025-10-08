@@ -17,6 +17,16 @@ public class Sistema {
 		this.equipos = new ArrayList<Equipo>();
 		this.torneos = new ArrayList<Torneo>();
 	}
+	
+	
+	public  String buscarEquipoDeJugador(Jugador jugador) {
+	    for (Equipo e : equipos) {
+	        if (e.getJugadores().contains(jugador)) {
+	            return e.getNombre();
+	        }
+	    }
+	    return null;
+	}
 
 	public Equipo equipoMayorAlturaPromedioTorneo(int idTorneo) throws Exception {
 		Torneo torneo = traerTorneoId(idTorneo);
