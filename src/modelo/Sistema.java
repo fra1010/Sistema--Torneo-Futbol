@@ -18,6 +18,62 @@ public class Sistema {
 		this.torneos = new ArrayList<Torneo>();
 	}
 
+	public Equipo equipoMayorAlturaPromedioTorneo(int idTorneo) throws Exception {
+		Torneo torneo = traerTorneoId(idTorneo);
+		if (torneo == null)
+			throw new Exception("Error no existe torneo con ese id");
+
+		List<Equipo> equiposDelTorneo = torneo.getEquipos();
+		if (equiposDelTorneo == null || equiposDelTorneo.isEmpty())
+			throw new Exception("Error el torneo no tiene equipos");
+
+		Equipo equipoMayorPromedio = null;
+		double mayorPromedio = 0;
+
+		for (Equipo e : equiposDelTorneo) {
+			if (e.getJugadores() == null || e.getJugadores().isEmpty())
+				continue;
+
+			double promedio = calcularPromedioAlturaEquipo(e.getIdEquipo());
+			if (equipoMayorPromedio == null || promedio > mayorPromedio) {
+				mayorPromedio = promedio;
+				equipoMayorPromedio = e;
+			}
+		}
+
+		if (equipoMayorPromedio == null)
+			throw new Exception("Ningún equipo válido con jugadores para calcular promedio.");
+
+		return equipoMayorPromedio;
+	}
+
+	public String equipoConMayorAlturaPromedio(int idTorneo) throws Exception {
+		Torneo torneo = traerTorneoId(idTorneo);
+		if (torneo == null)
+			throw new Exception("Error no existe torneo con ese id");
+
+		List<Equipo> equiposTorneo = torneo.getEquipos();
+		if (equiposTorneo == null || equiposTorneo.isEmpty())
+			throw new Exception("Error el torneo no tiene equipos");
+
+		Equipo equipoMayorPromedio = null;
+		double mayorPromedio = 0;
+
+		for (Equipo e : equiposTorneo) {
+
+			double promedio = calcularPromedioAlturaEquipo(e.getIdEquipo());
+			if (equipoMayorPromedio == null || promedio > mayorPromedio) {
+				mayorPromedio = promedio;
+				equipoMayorPromedio = e;
+			}
+		}
+
+		if (equipoMayorPromedio == null)
+			throw new Exception("Error no hay equipos validos");
+
+		return equipoMayorPromedio.getNombre();
+	}
+
 	public double calcularPromedioAlturaEquipo(int idEquipo) throws Exception {
 		Equipo equipo = traerEquipoId(idEquipo);
 		if (equipo == null)
@@ -29,7 +85,7 @@ public class Sistema {
 
 		double sum = 0;
 		for (Jugador j : jugadores) {
-			sum=j.getEstatura()+sum;
+			sum = j.getEstatura() + sum;
 		}
 
 		return sum / jugadores.size();

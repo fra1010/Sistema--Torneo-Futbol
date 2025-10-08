@@ -11,17 +11,14 @@ public class Test {
 
 		try {
 			// Jugadores (fechas válidas para 18+)
-			sys.agregarJugador("Ricado", "Bochini", "10896458", LocalDate.of(1954, 1, 25), 1.68, 67, "Delantero", 10); // id:1
+			sys.agregarJugador("Ricado", "Bochini", "10896458", LocalDate.of(1954, 1, 25), 1.67, 67, "Delantero", 10); // id:1
 
 			sys.agregarJugador("Romelu", "Lukaku", "36896458", LocalDate.of(1993, 5, 13), 1.91, 93, "Delantero", 9); // id:2
 
 			sys.agregarJugador("Martin", "Palermo", "30896458", LocalDate.of(1973, 10, 7), 1.91, 93, "Delantero", 9); // id:3
 
 			sys.agregarJugador("Franck", "Ribéry", "10896468", LocalDate.of(1983, 4, 7), 1.68, 67, "Delantero", 7); // id:4
-																													// (CAMBIO:
-																													// antes
-																													// era
-																													// today)
+																													
 
 			// Entrenadores
 			sys.agregarEntrenador("Sabella", "Alejandro", "10896451", LocalDate.of(1954, 11, 5), "Defensivo");
@@ -60,8 +57,11 @@ public class Test {
 			sys.agregarTorneo("torneo1", "invierno", LocalDate.of(1993, 5, 13), LocalDate.of(1994, 5, 13));
 
 			sys.agregarEquipoATorneo("Banfield", 1);
+			sys.agregarEquipoATorneo("Lanus", 1);
 			System.out.println(sys.getEquipos());
 			System.out.println(sys.calcularPromedioAlturaEquipo(1));
+			System.out.println(sys.calcularPromedioAlturaEquipo(2));
+			System.out.println(sys.equipoConMayorAlturaPromedio(1));
 
 		} catch (Exception e) {
 			e.printStackTrace();
