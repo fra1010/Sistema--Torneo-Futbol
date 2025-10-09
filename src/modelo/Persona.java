@@ -1,7 +1,7 @@
 package modelo;
 
 import java.time.LocalDate;
-import java.util.Objects;
+
 
 public class Persona {
 	private String nombre;
@@ -17,16 +17,9 @@ public class Persona {
 		this.setFechaNacimiento(fechaNacimiento);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Persona other = (Persona) obj;
-		return Objects.equals(dni, other.dni);
+	public boolean equals(Persona persona) {
+		
+		return persona.getDni().equals(this.dni);
 	}
 
 	public String getNombre() {

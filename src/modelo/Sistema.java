@@ -17,45 +17,16 @@ public class Sistema {
 		this.equipos = new ArrayList<Equipo>();
 		this.torneos = new ArrayList<Torneo>();
 	}
-	
-	
-	public  String buscarEquipoDeJugador(Jugador jugador) {
-	    for (Equipo e : equipos) {
-	        if (e.getJugadores().contains(jugador)) {
-	            return e.getNombre();
-	        }
-	    }
-	    return null;
-	}
 
-	public Equipo equipoMayorAlturaPromedioTorneo(int idTorneo) throws Exception {
-		Torneo torneo = traerTorneoId(idTorneo);
-		if (torneo == null)
-			throw new Exception("Error no existe torneo con ese id");
-
-		List<Equipo> equiposDelTorneo = torneo.getEquipos();
-		if (equiposDelTorneo == null || equiposDelTorneo.isEmpty())
-			throw new Exception("Error el torneo no tiene equipos");
-
-		Equipo equipoMayorPromedio = null;
-		double mayorPromedio = 0;
-
-		for (Equipo e : equiposDelTorneo) {
-			if (e.getJugadores() == null || e.getJugadores().isEmpty())
-				continue;
-
-			double promedio = calcularPromedioAlturaEquipo(e.getIdEquipo());
-			if (equipoMayorPromedio == null || promedio > mayorPromedio) {
-				mayorPromedio = promedio;
-				equipoMayorPromedio = e;
+	public String buscarEquipoDeJugador(Jugador jugador) { // util para otros metodos
+		for (Equipo e : equipos) {
+			if (e.getJugadores().contains(jugador)) {
+				return e.getNombre();
 			}
 		}
-
-		if (equipoMayorPromedio == null)
-			throw new Exception("Ningún equipo válido con jugadores para calcular promedio.");
-
-		return equipoMayorPromedio;
+		return null;
 	}
+
 
 	public String equipoConMayorAlturaPromedio(int idTorneo) throws Exception {
 		Torneo torneo = traerTorneoId(idTorneo);
@@ -70,6 +41,8 @@ public class Sistema {
 		double mayorPromedio = 0;
 
 		for (Equipo e : equiposTorneo) {
+			if (e.getJugadores() == null || e.getJugadores().isEmpty())
+				continue;
 
 			double promedio = calcularPromedioAlturaEquipo(e.getIdEquipo());
 			if (equipoMayorPromedio == null || promedio > mayorPromedio) {

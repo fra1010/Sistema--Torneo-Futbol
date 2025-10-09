@@ -23,8 +23,8 @@ public class Jugador extends Persona {
 
 	@Override
 	public String toString() {
-		return "Jugador [idJugador=" + idJugador + ", estatura=" + estatura + ", peso=" + peso + ", posicion="
-				+ posicion + ", numeroCamiseta=" + numeroCamiseta + "]";
+		return "Jugador [idJugador= " + idJugador + " "+ super.getNombre() +" "+ super.getApellido() +" "+ estatura + "m.  " + peso + "kg. posicion="
+				+ posicion + ", numeroCamiseta=" + numeroCamiseta + "]\n";
 	}
 
 	public int getIdJugador() {

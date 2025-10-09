@@ -11,9 +11,9 @@ public class Test {
 
 		try {
 			// Jugadores (fechas válidas para 18+)
-			sys.agregarJugador("Ricado", "Bochini", "10896458", LocalDate.of(1954, 1, 25), 1.67, 67, "Delantero", 10); // id:1
+			sys.agregarJugador("Ricado", "Bochini", "10.896.458", LocalDate.of(1954, 1, 25), 1.67, 67, "Delantero", 10); // id:1
 
-			sys.agregarJugador("Romelu", "Lukaku", "36896458", LocalDate.of(1993, 5, 13), 1.91, 93, "Delantero", 9); // id:2
+			sys.agregarJugador("Romelu", "Lukaku", "36 896 458", LocalDate.of(1993, 5, 13), 1.91, 93, "Delantero", 9); // id:2
 
 			sys.agregarJugador("Martin", "Palermo", "30896458", LocalDate.of(1973, 10, 7), 1.91, 93, "Delantero", 9); // id:3
 
@@ -63,6 +63,8 @@ public class Test {
 			System.out.println(sys.calcularPromedioAlturaEquipo(2));
 			System.out.println(sys.equipoConMayorAlturaPromedio(1));
 			System.out.println(sys.buscarEquipoDeJugador(sys.traerJugadorId(1)));
+			
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
