@@ -1,0 +1,12 @@
+# Archivos de Eclipse
+.classpath
+.project
+.settings/
+
+# Carpetas compiladas
+bin/
+
+# Archivos del sistema
+*.log
+*.tmp
+*.bak
