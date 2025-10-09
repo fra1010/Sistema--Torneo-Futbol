@@ -12,11 +12,53 @@ public class Partido {
 	private String estadio;
 	private List<Estadistica> estadisticas;
 
-	public void agregarEstadistica(Estadistica estadistica) {
 
-		estadisticas.add(estadistica);
+	public boolean agregarEstadistica(int goles, int asistencias, int minutosJugados, Jugador jugador) {
+
+		int id = 0;
+
+		if (estadisticas.size() > 0) {
+			int ultimoIndice = estadisticas.size() - 1;
+
+			Estadistica ultimoEstadistica = estadisticas.get(ultimoIndice);
+			id = ultimoEstadistica.getIdEstadistica();
+
+		}
+
+		Estadistica estadisticasAux = new Estadistica(id + 1, goles, asistencias, minutosJugados, jugador);
+
+		return estadisticas.add(estadisticasAux);
+
 	}
 
+	
+	public Estadistica traerEstadisticaId(int id) {
+
+		int indice = 0;
+		boolean encontrado = false;
+		Estadistica estadisticaAux= null;
+
+		if (!estadisticas.isEmpty()) {
+
+			while (indice < estadisticas.size() && !encontrado) {
+				if (estadisticas.get(indice).getIdEstadistica() == id) {
+					encontrado = true;
+					estadisticaAux = estadisticas.get(indice);
+				}
+				indice++;
+			}
+
+		}
+		return estadisticaAux;
+	}
+
+	public int calcularGoles(int idEquipo) {
+		
+		
+		
+		return 0;
+	}
+	
 	public Partido(int idPartido, LocalDate fecha, String equipoLocal, String equipoVisitante, String estadio)
 			throws Exception {
 

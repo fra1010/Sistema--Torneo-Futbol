@@ -17,6 +17,37 @@ public class Sistema {
 		this.equipos = new ArrayList<Equipo>();
 		this.torneos = new ArrayList<Torneo>();
 	}
+	
+	/*public boolean agregarEstadisticaAPartido(int idEstadistica, int idTorneo) throws Exception {
+		Torneo torneo = traerTorneoId(idTorneo);
+		if (torneo == null)
+			throw new Exception("No existe torneo");
+
+		Estadistica stat = traerEstadisticaId(idEstadistica);
+		if (equipo == null)
+			throw new Exception("No existe equipo");
+
+		return torneo.agregarEquipo(equipo);
+	}
+	*/
+	public List<Ganador> ganadores(int idTorneo, LocalDate fechaPartido){
+		Torneo torneoAux = traerTorneoId(idTorneo);
+		
+		int golesLocal;
+		int golesVisitante;
+		
+		for(Partido p: torneoAux.getPartidos()) {
+			if(p.getFecha().equals(fechaPartido)) {
+				
+				
+				
+				
+			}
+			
+		}
+		
+		return null;
+	}
 
 	public String buscarEquipoDeJugador(Jugador jugador) { // util para otros metodos
 		for (Equipo e : equipos) {
@@ -26,7 +57,6 @@ public class Sistema {
 		}
 		return null;
 	}
-
 
 	public String equipoConMayorAlturaPromedio(int idTorneo) throws Exception {
 		Torneo torneo = traerTorneoId(idTorneo);
@@ -267,7 +297,7 @@ public class Sistema {
 
 		}
 
-		Equipo equipoAux = new Equipo(id + 1, nombre, entrenador);
+		Equipo equipoAux = new Equipo(id + 1, LocalDate.now() ,nombre, entrenador);
 
 		return equipos.add(equipoAux);
 

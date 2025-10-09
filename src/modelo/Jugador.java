@@ -18,12 +18,13 @@ public class Jugador extends Persona {
 		this.estatura = estatura;
 		this.peso = peso;
 		this.posicion = posicion;
-		this.numeroCamiseta = numeroCamiseta;
+		setNumeroCamiseta(numeroCamiseta);
+		
 	}
 
 	@Override
 	public String toString() {
-		return "Jugador [idJugador= " + idJugador + " "+ super.getNombre() +" "+ super.getApellido() +" "+ estatura + "m.  " + peso + "kg. posicion="
+		return "\nJugador [idJugador= " + idJugador + " "+ super.getNombre() +" "+ super.getApellido() +" "+ estatura + "m.  " + peso + "kg. posicion="
 				+ posicion + ", numeroCamiseta=" + numeroCamiseta + "]\n";
 	}
 
@@ -67,6 +68,8 @@ public class Jugador extends Persona {
 		if(numeroCamiseta < 0 && numeroCamiseta>99) throw new Exception("Error: El numero de la camiseta es invalido");
 		this.numeroCamiseta = numeroCamiseta;
 	}
+	
+	
 	
 
 }

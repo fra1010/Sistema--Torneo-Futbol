@@ -22,8 +22,9 @@ public class Torneo {
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.partidos = new ArrayList<Partido>();
-	}
-
+	}	
+	
+	
 	public boolean agregarPartido(LocalDate fecha, Equipo equipoLocal, Equipo equipoVisitante, String estadio)
 			throws Exception {
 

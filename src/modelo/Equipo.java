@@ -1,23 +1,26 @@
 package modelo;
 
 import java.util.List;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Equipo {
 	private int idEquipo;
+	private LocalDate fechaFundacion;
 	private String codigo;
 	private String nombre;
 	private List<Jugador> jugadores;
 	private Entrenador entrenador;
 
-	public Equipo(int idEquipo, String nombre, Entrenador entrenador) {
+	public Equipo(int idEquipo, LocalDate fechaFundacion, String nombre, Entrenador entrenador) {
 		super();
 		this.idEquipo = idEquipo;
 		setCodigo(nombre);
+		this.fechaFundacion = fechaFundacion;
 		this.nombre = nombre;
 		this.jugadores = new ArrayList<Jugador>();
 		this.entrenador = entrenador;
-	}
+	}// agregar getters y setters a fecha y el set codigo
 	
 
 
