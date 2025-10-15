@@ -4,15 +4,16 @@ import java.time.LocalDate;
 
 public class Ganador {
 	private LocalDate fecha;
-	private Equipo equipoGanador;
+	private String  equipoGanador;
 	private int cantidadDeGoles;
 
-	public Ganador(LocalDate fecha, Equipo equipoGanador, int cantidadDeGoles) {
+	public Ganador(LocalDate fecha, String equipoGanador, int cantidadDeGoles) {
 		
 		this.fecha = fecha;
 		this.equipoGanador = equipoGanador;
 		this.cantidadDeGoles = cantidadDeGoles;
 	}
+	
 	
 	
 
@@ -24,6 +25,7 @@ public class Ganador {
 
 
 
+
 	public LocalDate getFecha() {
 		return fecha;
 	}
@@ -32,11 +34,11 @@ public class Ganador {
 		this.fecha = fecha;
 	}
 
-	public Equipo getEquipoGanador() {
+	public String getEquipoGanador() {
 		return equipoGanador;
 	}
 
-	public void setEquipoGanador(Equipo equipoGanador) {
+	public void setEquipoGanador(String equipoGanador) {
 		this.equipoGanador = equipoGanador;
 	}
 
@@ -49,5 +51,6 @@ public class Ganador {
 	}
 	
 	
-
+	
+	
 }

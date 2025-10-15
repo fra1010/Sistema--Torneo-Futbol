@@ -17,36 +17,58 @@ public class Sistema {
 		this.equipos = new ArrayList<Equipo>();
 		this.torneos = new ArrayList<Torneo>();
 	}
-	
-	/*public boolean agregarEstadisticaAPartido(int idEstadistica, int idTorneo) throws Exception {
-		Torneo torneo = traerTorneoId(idTorneo);
-		if (torneo == null)
-			throw new Exception("No existe torneo");
 
-		Estadistica stat = traerEstadisticaId(idEstadistica);
-		if (equipo == null)
-			throw new Exception("No existe equipo");
-
-		return torneo.agregarEquipo(equipo);
-	}
-	*/
-	public List<Ganador> ganadores(int idTorneo, LocalDate fechaPartido){
+	/*
+	 * public boolean agregarEstadisticaAPartido(int idEstadistica, int idTorneo)
+	 * throws Exception { Torneo torneo = traerTorneoId(idTorneo); if (torneo ==
+	 * null) throw new Exception("No existe torneo");
+	 * 
+	 * Estadistica stat = traerEstadisticaId(idEstadistica); if (equipo == null)
+	 * throw new Exception("No existe equipo");
+	 * 
+	 * return torneo.agregarEquipo(equipo); }
+	 */
+	public List<Ganador> generarGanadores(int idTorneo, LocalDate fechaPartido) {
 		Torneo torneoAux = traerTorneoId(idTorneo);
-		
-		int golesLocal;
-		int golesVisitante;
-		
-		for(Partido p: torneoAux.getPartidos()) {
-			if(p.getFecha().equals(fechaPartido)) {
+
+		List<Ganador> ganadores = new ArrayList<Ganador>();
+
+		for (Partido p : torneoAux.getPartidos()) {
+			if (p.getFecha().equals(fechaPartido)) {
+				int golesLocal = 0;
+				int golesVisitante = 0;
+				for (Estadistica e : p.getEstadisticas()) {
+					Jugador jugadorAux = e.getJugador();
+					String equipoJugador = buscarEquipoDeJugador(jugadorAux);
+
+					if (equipoJugador.equalsIgnoreCase(p.getEquipoLocal())) {
+						golesLocal += e.getGoles();
+					} else if (equipoJugador.equalsIgnoreCase(p.getEquipoVisitante())) {
+						golesVisitante += e.getGoles();
+
+					}
+				}
 				
-				
-				
+	            String equipoGanador = null;
+	            int golesGanador = 0;
+
+	            if (golesLocal > golesVisitante) {
+	                equipoGanador = p.getEquipoLocal();
+	                golesGanador = golesLocal;
+	            } else if (golesVisitante > golesLocal) {
+	                equipoGanador = p.getEquipoVisitante();
+	                golesGanador = golesVisitante;
+	            }
+
+	            // Crear objeto Ganador si hay un ganador
+	            if (equipoGanador != null) {
+	                ganadores.add(new Ganador(p.getFecha(), equipoGanador, golesGanador));
+	            }
 				
 			}
-			
 		}
-		
-		return null;
+		return ganadores;
+
 	}
 
 	public String buscarEquipoDeJugador(Jugador jugador) { // util para otros metodos
@@ -136,7 +158,7 @@ public class Sistema {
 
 	public List<Jugador> listaPorFechaNacimiento(LocalDate inicio, LocalDate fin) {
 
-		List<Jugador> jugadoresAux = new ArrayList<>();
+		List<Jugador> jugadoresAux = new ArrayList<Jugador>();
 
 		for (Jugador j : jugadores) {
 			if (((j.getFechaNacimiento().isAfter(inicio) && j.getFechaNacimiento().equals(inicio))
@@ -152,7 +174,7 @@ public class Sistema {
 
 	public List<Entrenador> listaTacticaPreferida(String tactica) {
 
-		List<Entrenador> entrenadoresAux = new ArrayList<>();
+		List<Entrenador> entrenadoresAux = new ArrayList<Entrenador>();
 
 		int indice = 0;
 
@@ -297,7 +319,7 @@ public class Sistema {
 
 		}
 
-		Equipo equipoAux = new Equipo(id + 1, LocalDate.now() ,nombre, entrenador);
+		Equipo equipoAux = new Equipo(id + 1, LocalDate.now(), nombre, entrenador);
 
 		return equipos.add(equipoAux);
 

@@ -81,7 +81,7 @@ public class Test {
 			sys.agregarEquipoATorneo("San Lorenzo", 1);
 			sys.agregarEquipoATorneo("Independiente", 1);
 			sys.agregarEquipoATorneo("Temperley", 1);
-			 System.out.println(sys.getEquipos());
+			System.out.println(sys.getEquipos());
 			// System.out.println(sys.calcularPromedioAlturaEquipo(1));
 			// System.out.println(sys.calcularPromedioAlturaEquipo(2));
 			// System.out.println(sys.equipoConMayorAlturaPromedio(1));
@@ -102,6 +102,9 @@ public class Test {
 			sys.traerTorneoId(1).traerPartidoId(4).agregarEstadistica(0, 0, 32, sys.traerJugadorId(6));
 			sys.traerTorneoId(1).traerPartidoId(4).agregarEstadistica(5, 1, 32, sys.traerJugadorId(8));
 			System.out.println(sys.traerTorneoId(1).getPartidos());
+			
+			
+			System.out.println(sys.generarGanadores(1, LocalDate.of(1954, 1, 25)));
 
 		} catch (Exception e) {
 			e.printStackTrace();

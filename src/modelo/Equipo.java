@@ -20,9 +20,7 @@ public class Equipo {
 		this.nombre = nombre;
 		this.jugadores = new ArrayList<Jugador>();
 		this.entrenador = entrenador;
-	}// agregar getters y setters a fecha y el set codigo
-	
-
+	}
 
 	public Equipo(Jugador jugador) {
 		super();
@@ -112,6 +110,14 @@ public class Equipo {
 
 	public void setEntrenador(Entrenador entrenador) {
 		this.entrenador = entrenador;
+	}
+
+	public LocalDate getFechaFundacion() {
+		return fechaFundacion;
+	}
+
+	public void setFechaFundacion(LocalDate fechaFundacion) {
+		this.fechaFundacion = fechaFundacion;
 	}
 
 }
