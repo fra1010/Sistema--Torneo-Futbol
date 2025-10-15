@@ -18,6 +18,41 @@ public class Sistema {
 		this.torneos = new ArrayList<Torneo>();
 	}
 
+	public int totalGolesJugador(int idTorneo, Jugador jugador) {
+		Torneo torneoAux = traerTorneoId(idTorneo);
+
+		int goles = 0;
+
+		for (Partido p : torneoAux.getPartidos()) {
+
+			for (Estadistica e : p.getEstadisticas()) {
+				if (e.getJugador().equals(jugador)) {
+
+					goles += e.getGoles();
+				}
+			}
+
+		}
+
+		return goles;
+
+	}
+
+	public List<Posicion> generarTablaPosiciones(int idTorneo) {
+		Torneo torneoAux = traerTorneoId(idTorneo);
+
+		List<Posicion> tablaPosiciones = new ArrayList<Posicion>();
+
+		for (Equipo e : torneoAux.getEquipos()) {
+			int puntaje = calcularPuntosEquipo(idTorneo, e.getNombre());
+			tablaPosiciones.add(new Posicion(e, puntaje));
+		}
+
+		tablaPosiciones.sort((p1, p2) -> Integer.compare(p2.getPuntaje(), p1.getPuntaje()));
+
+		return tablaPosiciones;
+	}
+
 	public int calcularPuntosEquipo(int idTorneo, String nombreEquipo) {
 		Torneo torneo = traerTorneoId(idTorneo);
 

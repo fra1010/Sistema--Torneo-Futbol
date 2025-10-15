@@ -96,7 +96,7 @@ public class Test {
 			sys.traerTorneoId(1).agregarPartido(LocalDate.of(1954, 1, 25), sys.traerEquipoId(7), sys.traerEquipoId(8),
 					"sola");
 
-			sys.traerTorneoId(1).traerPartidoId(1).agregarEstadistica(2, 1, 32, sys.traerJugadorId(1));
+			sys.traerTorneoId(1).traerPartidoId(1).agregarEstadistica(4, 1, 32, sys.traerJugadorId(1));
 			sys.traerTorneoId(1).traerPartidoId(2).agregarEstadistica(1, 1, 32, sys.traerJugadorId(2));
 			sys.traerTorneoId(1).traerPartidoId(3).agregarEstadistica(4, 1, 32, sys.traerJugadorId(3));
 			sys.traerTorneoId(1).traerPartidoId(4).agregarEstadistica(0, 0, 32, sys.traerJugadorId(6));
@@ -105,7 +105,10 @@ public class Test {
 			// System.out.println(sys.traerTorneoId(1).getPartidos());
 
 			// System.out.println(sys.generarGanadores(1, LocalDate.of(1954, 1, 25))); //cu 5
-			System.out.println(sys.calcularPuntosEquipo(1, "banfield"));
+			//System.out.println(sys.calcularPuntosEquipo(1, "banfield"));//cu 10
+			//System.out.println(sys.generarTablaPosiciones(1));//cu 11
+			System.out.println(sys.totalGolesJugador(1, sys.traerJugadorId(1)));
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
