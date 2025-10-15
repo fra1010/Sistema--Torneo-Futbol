@@ -18,6 +18,45 @@ public class Sistema {
 		this.torneos = new ArrayList<Torneo>();
 	}
 
+	public int calcularPuntosEquipo(int idTorneo, String nombreEquipo) {
+		Torneo torneo = traerTorneoId(idTorneo);
+
+		int puntos = 0;
+
+		for (Partido p : torneo.getPartidos()) {
+
+			int golesLocal = 0;
+			int golesVisitante = 0;
+
+			for (Estadistica e : p.getEstadisticas()) {
+				Jugador jugador = e.getJugador();
+				String equipoJugador = buscarEquipoDeJugador(jugador);
+
+				if (equipoJugador.equalsIgnoreCase(p.getEquipoLocal())) {
+					golesLocal += e.getGoles();
+				} else if (equipoJugador.equalsIgnoreCase(p.getEquipoVisitante())) {
+					golesVisitante += e.getGoles();
+				}
+			}
+
+			if (p.getEquipoLocal().equalsIgnoreCase(nombreEquipo)) {
+				if (golesLocal > golesVisitante) {
+					puntos += 3;
+				} else if (golesLocal == golesVisitante) {
+					puntos += 1;
+				}
+			} else if (p.getEquipoVisitante().equalsIgnoreCase(nombreEquipo)) {
+				if (golesVisitante > golesLocal) {
+					puntos += 3;
+				} else if (golesVisitante == golesLocal) {
+					puntos += 1;
+				}
+			}
+		}
+
+		return puntos;
+	}
+
 	public List<Equipo> equiposFundadosAntesQue(LocalDate fechaFin) {
 		List<Equipo> equiposAux = new ArrayList<Equipo>();
 

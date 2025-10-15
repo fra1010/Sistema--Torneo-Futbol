@@ -101,10 +101,11 @@ public class Test {
 			sys.traerTorneoId(1).traerPartidoId(3).agregarEstadistica(4, 1, 32, sys.traerJugadorId(3));
 			sys.traerTorneoId(1).traerPartidoId(4).agregarEstadistica(0, 0, 32, sys.traerJugadorId(6));
 			sys.traerTorneoId(1).traerPartidoId(4).agregarEstadistica(5, 1, 32, sys.traerJugadorId(8));
-			System.out.println(sys.equiposFundadosAntesQue(LocalDate.of(1901, 1, 1)));
+			//System.out.println(sys.equiposFundadosAntesQue(LocalDate.of(1901, 1, 1))); //cu 7
 			// System.out.println(sys.traerTorneoId(1).getPartidos());
 
-			// System.out.println(sys.generarGanadores(1, LocalDate.of(1954, 1, 25)));
+			// System.out.println(sys.generarGanadores(1, LocalDate.of(1954, 1, 25))); //cu 5
+			System.out.println(sys.calcularPuntosEquipo(1, "banfield"));
 
 		} catch (Exception e) {
 			e.printStackTrace();
