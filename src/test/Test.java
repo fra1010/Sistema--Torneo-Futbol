@@ -1,7 +1,7 @@
 package test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+
 
 import modelo.*;
 
@@ -43,27 +43,27 @@ public class Test {
 			 */
 
 			// Equipos (CAMBIO: pasar DNI del DT)
-			sys.agregarEquipo("Lanus", sys.traerEntrenadorId(1)); // id:1
+			sys.agregarEquipo("Lanus", LocalDate.of(1915, 1, 3), sys.traerEntrenadorId(1)); // id:1
 			// sys.agregarJugadorAEquipo("10896458", 1); // ejemplo por DNI (opcional)
 
-			sys.agregarEquipo("Banfield", sys.traerEntrenadorId(2)); // id:2
+			sys.agregarEquipo("Banfield", LocalDate.of(1896, 1, 21), sys.traerEntrenadorId(2)); // id:2
 
-			sys.agregarEquipo("Boca", sys.traerEntrenadorId(2));
-			sys.agregarEquipo("River", sys.traerEntrenadorId(2));
+			sys.agregarEquipo("Boca", LocalDate.of(1905, 4, 3), sys.traerEntrenadorId(2));
+			sys.agregarEquipo("River", LocalDate.of(1901, 5, 25), sys.traerEntrenadorId(2));
 
-			sys.agregarEquipo("Racing", sys.traerEntrenadorId(2));
-			sys.agregarEquipo("San Lorenzo", sys.traerEntrenadorId(2));
-			sys.agregarEquipo("Independiente", sys.traerEntrenadorId(2));
-			sys.agregarEquipo("Temperley", sys.traerEntrenadorId(2));
+			sys.agregarEquipo("Racing", LocalDate.of(1903, 3, 25), sys.traerEntrenadorId(2));
+			sys.agregarEquipo("San Lorenzo", LocalDate.of(1908, 4, 1), sys.traerEntrenadorId(2));
+			sys.agregarEquipo("Independiente", LocalDate.of(1905, 1, 1), sys.traerEntrenadorId(2));
+			sys.agregarEquipo("Temperley", LocalDate.of(1912, 11, 1), sys.traerEntrenadorId(2));
 			// Asignar jugadores a equipos (CAMBIO: usar método por DNI)
 			sys.agregarJugadorAEquipo("30896458", 1); // Palermo -> Lanus
 			sys.agregarJugadorAEquipo("10896458", 2); // Bochini -> Banfield
-			sys.agregarJugadorAEquipo("36896458", 5); 
-			sys.agregarJugadorAEquipo("10891458", 3); 
-			sys.agregarJugadorAEquipo("10894468", 4); 
-			sys.agregarJugadorAEquipo("10896467", 6); 
-			sys.agregarJugadorAEquipo("10891468", 7); 
-			sys.agregarJugadorAEquipo("10876468", 8); 
+			sys.agregarJugadorAEquipo("36896458", 5);
+			sys.agregarJugadorAEquipo("10891458", 3);
+			sys.agregarJugadorAEquipo("10894468", 4);
+			sys.agregarJugadorAEquipo("10896467", 6);
+			sys.agregarJugadorAEquipo("10891468", 7);
+			sys.agregarJugadorAEquipo("10876468", 8);
 			// System.out.println(sys.getEquipos());
 
 			// Borrar jugador de equipo (se mantiene igual, por idJugador e idEquipo)
@@ -81,7 +81,7 @@ public class Test {
 			sys.agregarEquipoATorneo("San Lorenzo", 1);
 			sys.agregarEquipoATorneo("Independiente", 1);
 			sys.agregarEquipoATorneo("Temperley", 1);
-			System.out.println(sys.getEquipos());
+			// System.out.println(sys.getEquipos());
 			// System.out.println(sys.calcularPromedioAlturaEquipo(1));
 			// System.out.println(sys.calcularPromedioAlturaEquipo(2));
 			// System.out.println(sys.equipoConMayorAlturaPromedio(1));
@@ -101,10 +101,10 @@ public class Test {
 			sys.traerTorneoId(1).traerPartidoId(3).agregarEstadistica(4, 1, 32, sys.traerJugadorId(3));
 			sys.traerTorneoId(1).traerPartidoId(4).agregarEstadistica(0, 0, 32, sys.traerJugadorId(6));
 			sys.traerTorneoId(1).traerPartidoId(4).agregarEstadistica(5, 1, 32, sys.traerJugadorId(8));
-			System.out.println(sys.traerTorneoId(1).getPartidos());
-			
-			
-			System.out.println(sys.generarGanadores(1, LocalDate.of(1954, 1, 25)));
+			System.out.println(sys.equiposFundadosAntesQue(LocalDate.of(1901, 1, 1)));
+			// System.out.println(sys.traerTorneoId(1).getPartidos());
+
+			// System.out.println(sys.generarGanadores(1, LocalDate.of(1954, 1, 25)));
 
 		} catch (Exception e) {
 			e.printStackTrace();

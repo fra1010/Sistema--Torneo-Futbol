@@ -50,10 +50,10 @@ public class Equipo {
 		String retorno;
 
 		if (this.getEntrenador() == null) {
-			retorno = "\n\ncodigo=" + codigo + ", Nombre: " + nombre + "\n Lista de jugadores:\n" + jugadores
+			retorno = "\n\ncodigo=" + codigo + ", Nombre: " + nombre + " Fundacion: "+fechaFundacion + "\n Lista de jugadores:\n" + jugadores
 					+ " \nNo hay entrenador\n\n";
 		} else
-			retorno = "\n\ncodigo=" + codigo + ", Nombre: " + nombre + "\n Lista de jugadores:\n" + jugadores
+			retorno = "\n\ncodigo=" + codigo + ", Nombre: " + nombre + " Fundacion: "+fechaFundacion +"\n Lista de jugadores:\n" + jugadores
 
 					+ "  \nEntrenador: " + this.getEntrenador().getApellido() + " " + this.getEntrenador().getNombre()
 					+ "\n\n";

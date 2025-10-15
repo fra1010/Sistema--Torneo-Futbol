@@ -18,6 +18,20 @@ public class Sistema {
 		this.torneos = new ArrayList<Torneo>();
 	}
 
+	public List<Equipo> equiposFundadosAntesQue(LocalDate fechaFin) {
+		List<Equipo> equiposAux = new ArrayList<Equipo>();
+
+		for (Equipo e : equipos) {
+			if (e.getFechaFundacion().isBefore(fechaFin)) {
+				equiposAux.add(e);
+
+			}
+
+		}
+
+		return equiposAux;
+	}
+
 	/*
 	 * public boolean agregarEstadisticaAPartido(int idEstadistica, int idTorneo)
 	 * throws Exception { Torneo torneo = traerTorneoId(idTorneo); if (torneo ==
@@ -48,23 +62,22 @@ public class Sistema {
 
 					}
 				}
-				
-	            String equipoGanador = null;
-	            int golesGanador = 0;
 
-	            if (golesLocal > golesVisitante) {
-	                equipoGanador = p.getEquipoLocal();
-	                golesGanador = golesLocal;
-	            } else if (golesVisitante > golesLocal) {
-	                equipoGanador = p.getEquipoVisitante();
-	                golesGanador = golesVisitante;
-	            }
+				String equipoGanador = null;
+				int golesGanador = 0;
 
-	            // Crear objeto Ganador si hay un ganador
-	            if (equipoGanador != null) {
-	                ganadores.add(new Ganador(p.getFecha(), equipoGanador, golesGanador));
-	            }
-				
+				if (golesLocal > golesVisitante) {
+					equipoGanador = p.getEquipoLocal();
+					golesGanador = golesLocal;
+				} else if (golesVisitante > golesLocal) {
+					equipoGanador = p.getEquipoVisitante();
+					golesGanador = golesVisitante;
+				}
+
+				if (equipoGanador != null) {// Crear objeto Ganador solamente si hay un ganador
+					ganadores.add(new Ganador(p.getFecha(), equipoGanador, golesGanador));
+				}
+
 			}
 		}
 		return ganadores;
@@ -307,7 +320,7 @@ public class Sistema {
 		return equipoAux;
 	}
 
-	public boolean agregarEquipo(String nombre, Entrenador entrenador) {
+	public boolean agregarEquipo(String nombre, LocalDate fechaFundacion, Entrenador entrenador) {
 
 		int id = 0;
 
@@ -319,7 +332,7 @@ public class Sistema {
 
 		}
 
-		Equipo equipoAux = new Equipo(id + 1, LocalDate.now(), nombre, entrenador);
+		Equipo equipoAux = new Equipo(id + 1, fechaFundacion, nombre, entrenador);
 
 		return equipos.add(equipoAux);
 

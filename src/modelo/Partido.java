@@ -72,8 +72,8 @@ public class Partido {
 
 	@Override
 	public String toString() {
-		return "Partido [idPartido=" + idPartido + ", fecha=" + fecha + ", equipoLocal=" + equipoLocal
-				+ ", equipoVisitante=" + equipoVisitante + ", estadio=" + estadio + ", estadisticas=" + estadisticas
+		return "Partido [idPartido=" + idPartido + ", fecha=" + fecha + ", Local=" + equipoLocal
+				+ ", Visitante=" + equipoVisitante + ", estadio=" + estadio + ", estadisticas=" + estadisticas
 				+ "]";
 	}
 

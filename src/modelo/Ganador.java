@@ -19,8 +19,7 @@ public class Ganador {
 
 	@Override
 	public String toString() {
-		return "Ganador [fecha=" + fecha + ", equipoGanador=" + equipoGanador + ", cantidadDeGoles=" + cantidadDeGoles
-				+ "]";
+		 return "Fecha: " + fecha + "  Ganador: " + equipoGanador + "  Goles: " + cantidadDeGoles+"\n";
 	}
 
 
