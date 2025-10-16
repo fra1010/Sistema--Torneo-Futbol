@@ -20,6 +20,40 @@ public class Sistema {
 	
 	
 	
+	public List<Asistencia> tablaAsistidores(int idTorneo){
+		
+		List<Asistencia>asistidores= new ArrayList<Asistencia>();
+		
+		
+		for(Jugador j: jugadores) {
+			Asistencia asistenciaAux= new Asistencia(j, totalAsistenciasJugador(idTorneo, j));
+			 
+			
+			asistidores.add(asistenciaAux);
+		}
+		asistidores.sort((p1, p2) -> Integer.compare(p2.getAsistencias(), p1.getAsistencias()));
+		
+		return asistidores;
+	}
+	
+	public List<Goleador> tablaGoleadores(int idTorneo){
+		
+		List<Goleador>goleadores= new ArrayList<Goleador>();
+		
+		
+		for(Jugador j: jugadores) {
+			Goleador goleadorAux= new Goleador(j, totalGolesJugador(idTorneo, j));
+			 
+			
+			goleadores.add(goleadorAux);
+		}
+		goleadores.sort((p1, p2) -> Integer.compare(p2.getGoles(), p1.getGoles()));
+		
+		return goleadores;
+	}
+	
+	
+
 	public int totalAsistenciasJugador(int idTorneo, Jugador jugador) {
 		Torneo torneoAux = traerTorneoId(idTorneo);
 
@@ -40,8 +74,6 @@ public class Sistema {
 
 	}
 
-	
-	
 	public int totalGolesJugador(int idTorneo, Jugador jugador) {
 		Torneo torneoAux = traerTorneoId(idTorneo);
 
@@ -262,8 +294,8 @@ public class Sistema {
 		List<Jugador> jugadoresAux = new ArrayList<Jugador>();
 
 		for (Jugador j : jugadores) {
-			if(((j.getFechaNacimiento().isAfter(inicio)|| j.getFechaNacimiento().equals(inicio))
-					&&(j.getFechaNacimiento().isBefore(fin) ||j.getFechaNacimiento().equals(fin)))) {
+			if (((j.getFechaNacimiento().isAfter(inicio) || j.getFechaNacimiento().equals(inicio))
+					&& (j.getFechaNacimiento().isBefore(fin) || j.getFechaNacimiento().equals(fin)))) {
 				jugadoresAux.add(j);
 			}
 

@@ -24,7 +24,7 @@ public class Goleador {
 	}
 	@Override
 	public String toString() {
-		return "Goleador [jugador=" + jugador + ", goles=" + goles + "]";
+		return jugador.getApellido() + ", goles=" + goles + "\n";
 	}
 	
 	

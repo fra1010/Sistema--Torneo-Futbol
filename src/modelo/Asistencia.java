@@ -12,7 +12,7 @@ public class Asistencia {
 	}
 	@Override
 	public String toString() {
-		return "Asistencia [jugador=" + jugador + ", asistencias=" + asistencias + "]";
+		return jugador.getApellido() + ", asistencias=" + asistencias + "\n";
 	}
 	public Jugador getJugador() {
 		return jugador;

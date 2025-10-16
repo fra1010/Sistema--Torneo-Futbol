@@ -80,7 +80,7 @@ public class Test {
 			//Agrego estadisticas al torneo
 			sys.traerTorneoId(1).traerPartidoId(1).agregarEstadistica(4, 1, 32, sys.traerJugadorId(1));
 			sys.traerTorneoId(1).traerPartidoId(2).agregarEstadistica(1, 1, 32, sys.traerJugadorId(2));
-			sys.traerTorneoId(1).traerPartidoId(3).agregarEstadistica(4, 1, 32, sys.traerJugadorId(3));
+			sys.traerTorneoId(1).traerPartidoId(3).agregarEstadistica(4, 2, 32, sys.traerJugadorId(3));
 			sys.traerTorneoId(1).traerPartidoId(4).agregarEstadistica(0, 0, 32, sys.traerJugadorId(6));
 			sys.traerTorneoId(1).traerPartidoId(4).agregarEstadistica(5, 1, 32, sys.traerJugadorId(8));
 			
@@ -108,10 +108,15 @@ public class Test {
 			System.out.println("GOLES EN EL TORNEO DE: " + sys.traerJugadorId(1).getApellido()); //CU12
 			System.out.println(sys.totalGolesJugador(1, sys.traerJugadorId(1)));
 			
-			System.out.println("ASISTENCIAS EN EL TORNEO DE: " + sys.traerJugadorId(1).getApellido()); //CU12
+			System.out.println("ASISTENCIAS EN EL TORNEO DE: " + sys.traerJugadorId(1).getApellido()); //CU13
 			System.out.println(sys.totalAsistenciasJugador(1, sys.traerJugadorId(1)));
 			
-			//System.out.println(sys.traerTorneoId(1).getPartidos());
+	
+			System.out.println("TABLA GOLEADORES:"); //CU14
+			System.out.println(sys.tablaGoleadores(1));
+			
+			System.out.println("TABLA ASISTIDORES:");//CU15
+			System.out.println(sys.tablaAsistidores(1));
 
 		} catch (Exception e) {
 			e.printStackTrace();
