@@ -81,7 +81,7 @@ public class Test {
 			sys.agregarEquipoATorneo("San Lorenzo", 1);
 			sys.agregarEquipoATorneo("Independiente", 1);
 			sys.agregarEquipoATorneo("Temperley", 1);
-			// System.out.println(sys.getEquipos());
+			System.out.println(sys.getEquipos());
 			// System.out.println(sys.calcularPromedioAlturaEquipo(1));
 			// System.out.println(sys.calcularPromedioAlturaEquipo(2));
 			// System.out.println(sys.equipoConMayorAlturaPromedio(1));

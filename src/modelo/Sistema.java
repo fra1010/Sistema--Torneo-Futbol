@@ -541,14 +541,26 @@ public class Sistema {
 		return jugadorAux;
 	}
 
-	public Jugador traerJugadorDni(String dni) {
-		for (Jugador j : jugadores) {
-			if (j.getDni().equals(dni))
-				return j;
-		}
-		return null;
-	}
+	public Jugador traerJugadorDni(String dni) { //usar equals en strings
 
+		int indice = 0;
+		boolean encontrado = false;
+		Jugador jugadorAux = null;
+
+		if (!jugadores.isEmpty()) {
+
+			while (indice < jugadores.size() && !encontrado) {
+				if (jugadores.get(indice).getDni().equals(dni)) { 
+					encontrado = true;
+					jugadorAux = jugadores.get(indice);
+				}
+				indice++;
+			}
+
+		}
+		return jugadorAux;
+	}
+	
 	public List<Jugador> getJugadores() {
 		return jugadores;
 	}
