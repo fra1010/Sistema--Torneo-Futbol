@@ -15,15 +15,10 @@ public class Ganador {
 	}
 	
 	
-	
-
 	@Override
 	public String toString() {
 		 return "Fecha: " + fecha + "  Ganador: " + equipoGanador + "  Goles: " + cantidadDeGoles+"\n";
 	}
-
-
-
 
 	public LocalDate getFecha() {
 		return fecha;

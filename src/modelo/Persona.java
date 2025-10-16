@@ -9,6 +9,7 @@ public class Persona {
 	private String dni;
 	private LocalDate fechaNacimiento;
 
+	
 	public Persona(String nombre, String apellido, String dni, LocalDate fechaNacimiento) throws Exception {
 		super();
 		this.nombre = nombre;
@@ -16,6 +17,14 @@ public class Persona {
 		this.setDni(dni);
 		this.setFechaNacimiento(fechaNacimiento);
 	}
+	
+
+	@Override
+	public String toString() {
+		return "[nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", fechaNacimiento="
+				+ fechaNacimiento + "]\n";
+	}
+
 
 	public boolean equals(Persona persona) {
 		

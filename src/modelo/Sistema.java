@@ -17,7 +17,31 @@ public class Sistema {
 		this.equipos = new ArrayList<Equipo>();
 		this.torneos = new ArrayList<Torneo>();
 	}
+	
+	
+	
+	public int totalAsistenciasJugador(int idTorneo, Jugador jugador) {
+		Torneo torneoAux = traerTorneoId(idTorneo);
 
+		int asistencias = 0;
+
+		for (Partido p : torneoAux.getPartidos()) {
+
+			for (Estadistica e : p.getEstadisticas()) {
+				if (e.getJugador().equals(jugador)) {
+
+					asistencias += e.getAsistencias();
+				}
+			}
+
+		}
+
+		return asistencias;
+
+	}
+
+	
+	
 	public int totalGolesJugador(int idTorneo, Jugador jugador) {
 		Torneo torneoAux = traerTorneoId(idTorneo);
 
@@ -106,16 +130,6 @@ public class Sistema {
 		return equiposAux;
 	}
 
-	/*
-	 * public boolean agregarEstadisticaAPartido(int idEstadistica, int idTorneo)
-	 * throws Exception { Torneo torneo = traerTorneoId(idTorneo); if (torneo ==
-	 * null) throw new Exception("No existe torneo");
-	 * 
-	 * Estadistica stat = traerEstadisticaId(idEstadistica); if (equipo == null)
-	 * throw new Exception("No existe equipo");
-	 * 
-	 * return torneo.agregarEquipo(equipo); }
-	 */
 	public List<Ganador> generarGanadores(int idTorneo, LocalDate fechaPartido) {
 		Torneo torneoAux = traerTorneoId(idTorneo);
 
@@ -248,10 +262,9 @@ public class Sistema {
 		List<Jugador> jugadoresAux = new ArrayList<Jugador>();
 
 		for (Jugador j : jugadores) {
-			if (((j.getFechaNacimiento().isAfter(inicio) && j.getFechaNacimiento().equals(inicio))
-					&& (j.getFechaNacimiento().isBefore(fin) && j.getFechaNacimiento().equals(fin)))) {
+			if(((j.getFechaNacimiento().isAfter(inicio)|| j.getFechaNacimiento().equals(inicio))
+					&&(j.getFechaNacimiento().isBefore(fin) ||j.getFechaNacimiento().equals(fin)))) {
 				jugadoresAux.add(j);
-
 			}
 
 		}
@@ -263,16 +276,9 @@ public class Sistema {
 
 		List<Entrenador> entrenadoresAux = new ArrayList<Entrenador>();
 
-		int indice = 0;
-
-		if (!entrenadores.isEmpty()) {
-
-			while (indice < entrenadores.size()) {
-				if (entrenadores.get(indice).getEstrategiaFavorita().equalsIgnoreCase(tactica)) {
-
-					entrenadoresAux.add(entrenadores.get(indice));
-				}
-				indice++;
+		for (Entrenador e : entrenadores) {
+			if (e.getEstrategiaFavorita().equalsIgnoreCase(tactica)) {
+				entrenadoresAux.add(e);
 			}
 
 		}
@@ -541,7 +547,7 @@ public class Sistema {
 		return jugadorAux;
 	}
 
-	public Jugador traerJugadorDni(String dni) { //usar equals en strings
+	public Jugador traerJugadorDni(String dni) { // usar equals en strings
 
 		int indice = 0;
 		boolean encontrado = false;
@@ -550,7 +556,7 @@ public class Sistema {
 		if (!jugadores.isEmpty()) {
 
 			while (indice < jugadores.size() && !encontrado) {
-				if (jugadores.get(indice).getDni().equals(dni)) { 
+				if (jugadores.get(indice).getDni().equals(dni)) {
 					encontrado = true;
 					jugadorAux = jugadores.get(indice);
 				}
@@ -560,7 +566,7 @@ public class Sistema {
 		}
 		return jugadorAux;
 	}
-	
+
 	public List<Jugador> getJugadores() {
 		return jugadores;
 	}

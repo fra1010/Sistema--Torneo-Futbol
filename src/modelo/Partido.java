@@ -12,7 +12,6 @@ public class Partido {
 	private String estadio;
 	private List<Estadistica> estadisticas;
 
-
 	public boolean agregarEstadistica(int goles, int asistencias, int minutosJugados, Jugador jugador) {
 
 		int id = 0;
@@ -31,12 +30,11 @@ public class Partido {
 
 	}
 
-	
 	public Estadistica traerEstadisticaId(int id) {
 
 		int indice = 0;
 		boolean encontrado = false;
-		Estadistica estadisticaAux= null;
+		Estadistica estadisticaAux = null;
 
 		if (!estadisticas.isEmpty()) {
 
@@ -53,12 +51,10 @@ public class Partido {
 	}
 
 	public int calcularGoles(int idEquipo) {
-		
-		
-		
+
 		return 0;
 	}
-	
+
 	public Partido(int idPartido, LocalDate fecha, String equipoLocal, String equipoVisitante, String estadio)
 			throws Exception {
 
@@ -72,9 +68,8 @@ public class Partido {
 
 	@Override
 	public String toString() {
-		return "Partido [idPartido=" + idPartido + ", fecha=" + fecha + ", Local=" + equipoLocal
-				+ ", Visitante=" + equipoVisitante + ", estadio=" + estadio + ", estadisticas=" + estadisticas
-				+ "]";
+		return "Partido [idPartido=" + idPartido + ", fecha=" + fecha + ", Local=" + equipoLocal + ", Visitante="
+				+ equipoVisitante + ", estadio=" + estadio + "\n estadisticas=" + estadisticas + "]\n";
 	}
 
 	public int getIdPartido() {

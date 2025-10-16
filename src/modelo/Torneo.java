@@ -67,7 +67,7 @@ public class Torneo {
 	public boolean tieneEquipo(int idEquipo) {
 		for (Equipo j : equipos)
 			if (j.getIdEquipo() == idEquipo)
-				return true; // equals!
+				return true; 
 		return false;
 	}
 
@@ -76,7 +76,6 @@ public class Torneo {
 			throw new Exception("Equipo nulo");
 		if (tieneEquipo(j.getIdEquipo()))
 			throw new Exception("Equipo ya está en este Torneo");
-		// (opcional) validar número de camiseta único acá
 		equipos.add(j);
 		return true;
 	}

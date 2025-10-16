@@ -13,7 +13,7 @@ public class Posicion {
 
 	@Override
 	public String toString() {
-		return "Posicion " + equipo.getNombre() + ", puntos=" + puntos + "\n";
+		return  equipo.getNombre() + ", puntos=" + puntos + "\n";
 	}
 
 	public Equipo getEquipo() {
